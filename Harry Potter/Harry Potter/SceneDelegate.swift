@@ -19,12 +19,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             UINavigationBar.appearance().scrollEdgeAppearance = UINavigationBarAppearance()
         }
         
-//        let window = UIWindow(windowScene: windowScene)
-////        let vc: LoginViewController = LoginViewController()
-//        let navVC = UINavigationController(rootViewController: vc)
-//        window.rootViewController = navVC
-//        window.makeKeyAndVisible()
-//        self.window = window
+        let window = UIWindow(windowScene: windowScene)
+        let vc: LoginViewController = LoginViewController()
+        let navVC = UINavigationController(rootViewController: vc)
+        window.rootViewController = navVC
+        window.makeKeyAndVisible()
+        self.window = window
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -11,6 +11,8 @@
 		36B955B8296CB743006A0467 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B955B7296CB743006A0467 /* SceneDelegate.swift */; };
 		36B955BF296CB744006A0467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36B955BE296CB744006A0467 /* Assets.xcassets */; };
 		36B955C2296CB744006A0467 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36B955C0296CB744006A0467 /* LaunchScreen.storyboard */; };
+		36B955CC296CBA2D006A0467 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B955CB296CBA2D006A0467 /* LoginView.swift */; };
+		36B955CE296CBABA006A0467 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B955CD296CBABA006A0467 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		36B955BE296CB744006A0467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36B955C1296CB744006A0467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36B955C3296CB744006A0467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36B955CB296CBA2D006A0467 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		36B955CD296CBABA006A0467 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,7 @@
 		36B955B4296CB743006A0467 /* Harry Potter */ = {
 			isa = PBXGroup;
 			children = (
+				36B955C9296CB9E3006A0467 /* Features */,
 				36B955B5296CB743006A0467 /* AppDelegate.swift */,
 				36B955B7296CB743006A0467 /* SceneDelegate.swift */,
 				36B955BE296CB744006A0467 /* Assets.xcassets */,
@@ -59,6 +64,23 @@
 				36B955C3296CB744006A0467 /* Info.plist */,
 			);
 			path = "Harry Potter";
+			sourceTree = "<group>";
+		};
+		36B955C9296CB9E3006A0467 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				36B955CA296CB9FE006A0467 /* Login */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		36B955CA296CB9FE006A0467 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				36B955CB296CBA2D006A0467 /* LoginView.swift */,
+				36B955CD296CBABA006A0467 /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +153,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36B955CE296CBABA006A0467 /* LoginViewController.swift in Sources */,
+				36B955CC296CBA2D006A0467 /* LoginView.swift in Sources */,
 				36B955B6296CB743006A0467 /* AppDelegate.swift in Sources */,
 				36B955B8296CB743006A0467 /* SceneDelegate.swift in Sources */,
 			);
