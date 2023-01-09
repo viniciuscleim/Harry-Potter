@@ -31,8 +31,8 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginViewDelegate {
     func actionForgotPasswordButton() {
-//        let nextViewController: PasswordChangeViewController = PasswordChangeViewController()
-//        navigationController?.pushViewController(nextViewController, animated: true)
+        let nextViewController: PasswordChangeViewController = PasswordChangeViewController()
+        navigationController?.pushViewController(nextViewController, animated: true)
         
     }
     
@@ -41,8 +41,8 @@ extension LoginViewController: LoginViewDelegate {
     }
     
     func actionRegisterButton() {
-//        let nextViewController: RegisterViewController = RegisterViewController()
-//        navigationController?.pushViewController(nextViewController, animated: true)
+        let nextViewController: RegisterViewController = RegisterViewController()
+        navigationController?.pushViewController(nextViewController, animated: true)
     }
     
     

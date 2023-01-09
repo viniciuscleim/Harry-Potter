@@ -13,6 +13,10 @@
 		36B955C2296CB744006A0467 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36B955C0296CB744006A0467 /* LaunchScreen.storyboard */; };
 		36B955CC296CBA2D006A0467 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B955CB296CBA2D006A0467 /* LoginView.swift */; };
 		36B955CE296CBABA006A0467 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B955CD296CBABA006A0467 /* LoginViewController.swift */; };
+		36B955D1296CBCD7006A0467 /* PasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B955D0296CBCD7006A0467 /* PasswordChangeViewController.swift */; };
+		36B955D3296CBCF4006A0467 /* PasswordChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B955D2296CBCF4006A0467 /* PasswordChangeView.swift */; };
+		36B955D6296CBD87006A0467 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B955D5296CBD87006A0467 /* RegisterView.swift */; };
+		36B955D8296CBD9E006A0467 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B955D7296CBD9E006A0467 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		36B955C3296CB744006A0467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36B955CB296CBA2D006A0467 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		36B955CD296CBABA006A0467 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		36B955D0296CBCD7006A0467 /* PasswordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeViewController.swift; sourceTree = "<group>"; };
+		36B955D2296CBCF4006A0467 /* PasswordChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeView.swift; sourceTree = "<group>"; };
+		36B955D5296CBD87006A0467 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		36B955D7296CBD9E006A0467 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +77,8 @@
 		36B955C9296CB9E3006A0467 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				36B955D4296CBD64006A0467 /* Register */,
+				36B955CF296CBC92006A0467 /* PasswordsChange */,
 				36B955CA296CB9FE006A0467 /* Login */,
 			);
 			path = Features;
@@ -81,6 +91,24 @@
 				36B955CD296CBABA006A0467 /* LoginViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		36B955CF296CBC92006A0467 /* PasswordsChange */ = {
+			isa = PBXGroup;
+			children = (
+				36B955D2296CBCF4006A0467 /* PasswordChangeView.swift */,
+				36B955D0296CBCD7006A0467 /* PasswordChangeViewController.swift */,
+			);
+			path = PasswordsChange;
+			sourceTree = "<group>";
+		};
+		36B955D4296CBD64006A0467 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				36B955D5296CBD87006A0467 /* RegisterView.swift */,
+				36B955D7296CBD9E006A0467 /* RegisterViewController.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,8 +183,12 @@
 			files = (
 				36B955CE296CBABA006A0467 /* LoginViewController.swift in Sources */,
 				36B955CC296CBA2D006A0467 /* LoginView.swift in Sources */,
+				36B955D1296CBCD7006A0467 /* PasswordChangeViewController.swift in Sources */,
+				36B955D8296CBD9E006A0467 /* RegisterViewController.swift in Sources */,
+				36B955D6296CBD87006A0467 /* RegisterView.swift in Sources */,
 				36B955B6296CB743006A0467 /* AppDelegate.swift in Sources */,
 				36B955B8296CB743006A0467 /* SceneDelegate.swift in Sources */,
+				36B955D3296CBCF4006A0467 /* PasswordChangeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
