@@ -2,7 +2,7 @@
 //  LoginView.swift
 //  SuperTrunfo
 //
-//  Created by Vinicius Cleim on 16/11/22.
+//  Created by Vinicius Cleim on 09/01/23.
 //
 
 import UIKit
@@ -43,6 +43,7 @@ class LoginView: UIView {
         textField.placeholder = "Digite seu email"
         textField.autocapitalizationType = .none
         textField.textColor = .black
+        textField.text = "vini@hotmail.com"
         return textField
     }()
     
@@ -59,6 +60,7 @@ class LoginView: UIView {
         textField.placeholder = "Digite sua senha"
         textField.autocapitalizationType = .none
         textField.textColor = .black
+        textField.text = "123456"
         return textField
     }()
     
@@ -81,7 +83,6 @@ class LoginView: UIView {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         button.addTarget(self, action: #selector(didTapSignInButton), for: .touchUpInside)
         return button
-        
     }()
     
     lazy var registerButton: UIButton = {
@@ -124,7 +125,6 @@ class LoginView: UIView {
         addSubview(forgotPasswordButton)
         addSubview(signInButton)
         addSubview(registerButton)
-        
     }
     
     private func setupConstraints() {
@@ -155,10 +155,8 @@ class LoginView: UIView {
             
             registerButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -5),
             registerButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            registerButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            registerButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
             
-        
         ])
     }
-    
 }

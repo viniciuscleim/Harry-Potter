@@ -2,13 +2,14 @@
 //  PasswordChangeView.swift
 //  SuperTrunfo
 //
-//  Created by Vinicius Cleim on 16/11/22.
+//  Created by Vinicius Cleim on 09/01/23.
 //
 
 import UIKit
 
 protocol PasswordViewDelegate: AnyObject {
     func actionReturnButton()
+    func actionSendEmailButton()
 }
 
 class PasswordChangeView: UIView {
@@ -71,6 +72,7 @@ class PasswordChangeView: UIView {
         button.backgroundColor = .orange
         button.layer.cornerRadius = 12
         button.titleLabel?.font = UIFont.systemFont(ofSize: 25)
+        button.addTarget(self, action: #selector(didTapSendEmailButton), for: .touchUpInside)
         return button
         
     }()
@@ -89,6 +91,10 @@ class PasswordChangeView: UIView {
     
     @objc private func didTapReturnButton() {
         delegate?.actionReturnButton()
+    }
+    
+    @objc private func didTapSendEmailButton() {
+        delegate?.actionSendEmailButton()
     }
     
     private func addElements() {

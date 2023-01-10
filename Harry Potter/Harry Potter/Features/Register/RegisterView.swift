@@ -2,13 +2,14 @@
 //  RegisterView.swift
 //  SuperTrunfo
 //
-//  Created by Vinicius Cleim on 21/11/22.
+//  Created by Vinicius Cleim on 09/01/23.
 //
 
 import UIKit
 
 protocol RegisterViewDelegate: AnyObject {
     func actionReturnButton()
+    func actionRegisterButton()
 }
 
 class RegisterView: UIView {
@@ -17,12 +18,14 @@ class RegisterView: UIView {
     
     func setDelegate(delegate: RegisterViewDelegate?) {
         self.delegate = delegate
+    }
     
     lazy var returnButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         button.tintColor = .black
+        button.addTarget(self, action: #selector(didTapReturnButton), for: .touchUpInside)
         return button
     }()
     
@@ -93,6 +96,7 @@ class RegisterView: UIView {
         button.backgroundColor = .orange
         button.layer.cornerRadius = 12
         button.titleLabel?.font = UIFont.systemFont(ofSize: 25)
+        button.addTarget(self, action: #selector(didTapRegisterButton), for: .touchUpInside)
         return button
         
     }()
@@ -107,9 +111,14 @@ class RegisterView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
         
-        @objc private func didTapReturnButton() {
-            delegate?.actionReturnButton()
-        
+    }
+    
+    @objc private func didTapReturnButton() {
+        delegate?.actionReturnButton()
+    }
+    
+    @objc private func didTapRegisterButton() {
+        delegate?.actionReturnButton()
     }
     
     private func addElements() {
@@ -151,19 +160,8 @@ class RegisterView: UIView {
             registerButton.topAnchor.constraint(equalTo: confirmPasswordTextField.bottomAnchor, constant: 50),
             registerButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
             registerButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
-            registerButton.heightAnchor.constraint(equalToConstant: 70),
-            
-            
-            
-            
-            
-            
-            
+            registerButton.heightAnchor.constraint(equalToConstant: 70)
             
         ])
-        
-        
     }
-    
 }
-                            
