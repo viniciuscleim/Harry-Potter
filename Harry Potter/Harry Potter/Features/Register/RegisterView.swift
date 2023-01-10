@@ -7,7 +7,16 @@
 
 import UIKit
 
+protocol RegisterViewDelegate: AnyObject {
+    func actionReturnButton()
+}
+
 class RegisterView: UIView {
+    
+    weak private var delegate: RegisterViewDelegate?
+    
+    func setDelegate(delegate: RegisterViewDelegate?) {
+        self.delegate = delegate
     
     lazy var returnButton: UIButton = {
         let button = UIButton()
@@ -97,6 +106,9 @@ class RegisterView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+        
+        @objc private func didTapReturnButton() {
+            delegate?.actionReturnButton()
         
     }
     

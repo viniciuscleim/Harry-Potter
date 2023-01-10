@@ -18,9 +18,16 @@ class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerView?.setDelegate(delegate: self)
         
 
         }
     
 
+}
+
+extension RegisterViewController: RegisterViewDelegate {
+    func actionReturnButton() {
+        navigationController?.popViewController(animated: true)
+    }
 }
