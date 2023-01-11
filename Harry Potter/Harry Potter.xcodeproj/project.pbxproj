@@ -22,6 +22,9 @@
 		BE00C869296DF19800DC1F3D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = BE00C868296DF19800DC1F3D /* FirebaseStorage */; };
 		BE00C86B296DFD3800DC1F3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE00C86A296DFD3800DC1F3D /* GoogleService-Info.plist */; };
 		BE00C86E296E0C4600DC1F3D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE00C86D296E0C4600DC1F3D /* TabBarController.swift */; };
+		BE00C871296E109F00DC1F3D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE00C870296E109F00DC1F3D /* HomeViewController.swift */; };
+		BE00C873296E10AC00DC1F3D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE00C872296E10AC00DC1F3D /* HomeView.swift */; };
+		BE00C877296E14E800DC1F3D /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE00C876296E14E800DC1F3D /* HomeCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +42,9 @@
 		36B955D7296CBD9E006A0467 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BE00C86A296DFD3800DC1F3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BE00C86D296E0C4600DC1F3D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		BE00C870296E109F00DC1F3D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BE00C872296E10AC00DC1F3D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		BE00C876296E14E800DC1F3D /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,7 @@
 		36B955C9296CB9E3006A0467 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				BE00C86F296E108A00DC1F3D /* Home */,
 				BE00C86C296E0C1700DC1F3D /* TabBar */,
 				36B955D4296CBD64006A0467 /* Register */,
 				36B955CF296CBC92006A0467 /* PasswordsChange */,
@@ -129,6 +136,24 @@
 				BE00C86D296E0C4600DC1F3D /* TabBarController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		BE00C86F296E108A00DC1F3D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BE00C875296E14D300DC1F3D /* Cell */,
+				BE00C870296E109F00DC1F3D /* HomeViewController.swift */,
+				BE00C872296E10AC00DC1F3D /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		BE00C875296E14D300DC1F3D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BE00C876296E14E800DC1F3D /* HomeCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,10 +240,13 @@
 				36B955D1296CBCD7006A0467 /* PasswordChangeViewController.swift in Sources */,
 				BE00C86E296E0C4600DC1F3D /* TabBarController.swift in Sources */,
 				36B955D8296CBD9E006A0467 /* RegisterViewController.swift in Sources */,
+				BE00C873296E10AC00DC1F3D /* HomeView.swift in Sources */,
+				BE00C871296E109F00DC1F3D /* HomeViewController.swift in Sources */,
 				36B955D6296CBD87006A0467 /* RegisterView.swift in Sources */,
 				36B955B6296CB743006A0467 /* AppDelegate.swift in Sources */,
 				36B955B8296CB743006A0467 /* SceneDelegate.swift in Sources */,
 				36B955D3296CBCF4006A0467 /* PasswordChangeView.swift in Sources */,
+				BE00C877296E14E800DC1F3D /* HomeCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

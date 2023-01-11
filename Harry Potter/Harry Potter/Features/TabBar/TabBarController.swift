@@ -16,10 +16,10 @@ class TabBarController: UITabBarController {
     
     
     private func setupTabBar() {
-//        let firstItem = HomeViewController()
+        let firstItem = HomeViewController()
 //        let secondItem = FavoritesViewController()
         
-        setViewControllers([], animated: false)
+        setViewControllers([firstItem], animated: false)
         tabBar.backgroundColor = UIColor(red: 55/255, green: 67/255, blue: 91/255, alpha: 1.0)
         tabBar.barTintColor = .gray
         tabBar.tintColor = .white
@@ -27,7 +27,7 @@ class TabBarController: UITabBarController {
 
         guard let items = tabBar.items else {return}
 
-//        items[0].title = "Home"
-//        items[0].image = UIImage(systemName: "bolt")
+        items[0].title = "Home"
+        items[0].image = UIImage(systemName: "bolt")
     }
 }
