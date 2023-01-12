@@ -25,6 +25,10 @@
 		BE00C871296E109F00DC1F3D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE00C870296E109F00DC1F3D /* HomeViewController.swift */; };
 		BE00C873296E10AC00DC1F3D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE00C872296E10AC00DC1F3D /* HomeView.swift */; };
 		BE00C877296E14E800DC1F3D /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE00C876296E14E800DC1F3D /* HomeCollectionViewCell.swift */; };
+		BE3F6F2F296F62CE00E2C124 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F6F2E296F62CE00E2C124 /* FavoritesViewController.swift */; };
+		BE3F6F31296F62E100E2C124 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F6F30296F62E100E2C124 /* FavoritesView.swift */; };
+		BE4A44FB2970075500557648 /* FavoriteCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4A44FA2970075500557648 /* FavoriteCharacter.swift */; };
+		BE4A44FD29700B0000557648 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4A44FC29700B0000557648 /* FavoritesTableViewCell.swift */; };
 		BEC5C865296F2AB300FF977E /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C864296F2AB300FF977E /* CharacterDetailsViewController.swift */; };
 		BEC5C867296F2AC700FF977E /* CharacterDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C866296F2AC700FF977E /* CharacterDetailsView.swift */; };
 		BEC5C86B296F4ED400FF977E /* HouseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C86A296F4ED400FF977E /* HouseType.swift */; };
@@ -49,6 +53,10 @@
 		BE00C870296E109F00DC1F3D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BE00C872296E10AC00DC1F3D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		BE00C876296E14E800DC1F3D /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		BE3F6F2E296F62CE00E2C124 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		BE3F6F30296F62E100E2C124 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		BE4A44FA2970075500557648 /* FavoriteCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharacter.swift; sourceTree = "<group>"; };
+		BE4A44FC29700B0000557648 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		BEC5C864296F2AB300FF977E /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		BEC5C866296F2AC700FF977E /* CharacterDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsView.swift; sourceTree = "<group>"; };
 		BEC5C86A296F4ED400FF977E /* HouseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseType.swift; sourceTree = "<group>"; };
@@ -88,7 +96,9 @@
 		36B955B4296CB743006A0467 /* Harry Potter */ = {
 			isa = PBXGroup;
 			children = (
-				BEC5C868296F4EB700FF977E /* Commons */,
+				BE4A44F92970073900557648 /* Models */,
+				BEC5C869296F4EBF00FF977E /* Enums */,
+				BEC5C86C296F52DC00FF977E /* Extension */,
 				36B955C9296CB9E3006A0467 /* Features */,
 				36B955B5296CB743006A0467 /* AppDelegate.swift */,
 				36B955B7296CB743006A0467 /* SceneDelegate.swift */,
@@ -103,6 +113,7 @@
 		36B955C9296CB9E3006A0467 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				BE3F6F2D296F62B400E2C124 /* Favorites */,
 				BEC5C863296F2A9900FF977E /* CharacterDetails */,
 				BE00C86F296E108A00DC1F3D /* Home */,
 				BE00C86C296E0C1700DC1F3D /* TabBar */,
@@ -166,6 +177,32 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		BE3F6F2D296F62B400E2C124 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				BE3F6F32296F655600E2C124 /* Cell */,
+				BE3F6F30296F62E100E2C124 /* FavoritesView.swift */,
+				BE3F6F2E296F62CE00E2C124 /* FavoritesViewController.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		BE3F6F32296F655600E2C124 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BE4A44FC29700B0000557648 /* FavoritesTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		BE4A44F92970073900557648 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BE4A44FA2970075500557648 /* FavoriteCharacter.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		BEC5C863296F2A9900FF977E /* CharacterDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,15 +210,6 @@
 				BEC5C864296F2AB300FF977E /* CharacterDetailsViewController.swift */,
 			);
 			path = CharacterDetails;
-			sourceTree = "<group>";
-		};
-		BEC5C868296F4EB700FF977E /* Commons */ = {
-			isa = PBXGroup;
-			children = (
-				BEC5C86C296F52DC00FF977E /* Extension */,
-				BEC5C869296F4EBF00FF977E /* Enums */,
-			);
-			path = Commons;
 			sourceTree = "<group>";
 		};
 		BEC5C869296F4EBF00FF977E /* Enums */ = {
@@ -287,10 +315,14 @@
 				BE00C86E296E0C4600DC1F3D /* TabBarController.swift in Sources */,
 				BEC5C86B296F4ED400FF977E /* HouseType.swift in Sources */,
 				36B955D8296CBD9E006A0467 /* RegisterViewController.swift in Sources */,
+				BE3F6F31296F62E100E2C124 /* FavoritesView.swift in Sources */,
+				BE3F6F2F296F62CE00E2C124 /* FavoritesViewController.swift in Sources */,
 				BE00C873296E10AC00DC1F3D /* HomeView.swift in Sources */,
 				BEC5C86E296F52EB00FF977E /* CALayer.swift in Sources */,
+				BE4A44FD29700B0000557648 /* FavoritesTableViewCell.swift in Sources */,
 				BE00C871296E109F00DC1F3D /* HomeViewController.swift in Sources */,
 				36B955D6296CBD87006A0467 /* RegisterView.swift in Sources */,
+				BE4A44FB2970075500557648 /* FavoriteCharacter.swift in Sources */,
 				36B955B6296CB743006A0467 /* AppDelegate.swift in Sources */,
 				36B955B8296CB743006A0467 /* SceneDelegate.swift in Sources */,
 				36B955D3296CBCF4006A0467 /* PasswordChangeView.swift in Sources */,
