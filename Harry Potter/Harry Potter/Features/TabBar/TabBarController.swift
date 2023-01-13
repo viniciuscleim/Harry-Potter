@@ -18,8 +18,9 @@ class TabBarController: UITabBarController {
     private func setupTabBar() {
         let firstItem = HomeViewController()
         let secondItem = FavoritesViewController()
+        let thirdItem = ProfileViewController()
         
-        setViewControllers([firstItem, secondItem], animated: false)
+        setViewControllers([firstItem, secondItem, thirdItem], animated: false)
         tabBar.backgroundColor = UIColor(red: 55/255, green: 67/255, blue: 91/255, alpha: 1.0)
         tabBar.barTintColor = .gray
         tabBar.tintColor = .white
@@ -32,5 +33,8 @@ class TabBarController: UITabBarController {
         
         items[1].title = "Favorites"
         items[1].image = UIImage(systemName: "heart.fill")
+        
+        items[2].title = "Profile"
+        items[2].image = UIImage(systemName: "person.fill")
     }
 }

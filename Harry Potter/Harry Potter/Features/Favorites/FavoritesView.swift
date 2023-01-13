@@ -20,6 +20,13 @@ class FavoritesView: UIView {
         return label
     }()
     
+    lazy var lineView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        return view
+    }()
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -45,6 +52,7 @@ class FavoritesView: UIView {
     
     private func addElements() {
         addSubview(favoritesLabel)
+        addSubview(lineView)
         addSubview(tableView)
     }
     
@@ -54,7 +62,12 @@ class FavoritesView: UIView {
             favoritesLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             favoritesLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             
-            tableView.topAnchor.constraint(equalTo: favoritesLabel.bottomAnchor, constant: 10),
+            lineView.topAnchor.constraint(equalTo: favoritesLabel.bottomAnchor, constant: 4),
+            lineView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            lineView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            lineView.heightAnchor.constraint(equalToConstant: 1),
+            
+            tableView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 6),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0)

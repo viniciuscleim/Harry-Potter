@@ -29,6 +29,8 @@
 		BE3F6F31296F62E100E2C124 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F6F30296F62E100E2C124 /* FavoritesView.swift */; };
 		BE4A44FB2970075500557648 /* FavoriteCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4A44FA2970075500557648 /* FavoriteCharacter.swift */; };
 		BE4A44FD29700B0000557648 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4A44FC29700B0000557648 /* FavoritesTableViewCell.swift */; };
+		BE4A450129705F8900557648 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4A450029705F8900557648 /* ProfileView.swift */; };
+		BE4A450329705F9900557648 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4A450229705F9900557648 /* ProfileViewController.swift */; };
 		BEC5C865296F2AB300FF977E /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C864296F2AB300FF977E /* CharacterDetailsViewController.swift */; };
 		BEC5C867296F2AC700FF977E /* CharacterDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C866296F2AC700FF977E /* CharacterDetailsView.swift */; };
 		BEC5C86B296F4ED400FF977E /* HouseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C86A296F4ED400FF977E /* HouseType.swift */; };
@@ -57,6 +59,8 @@
 		BE3F6F30296F62E100E2C124 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		BE4A44FA2970075500557648 /* FavoriteCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharacter.swift; sourceTree = "<group>"; };
 		BE4A44FC29700B0000557648 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
+		BE4A450029705F8900557648 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		BE4A450229705F9900557648 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BEC5C864296F2AB300FF977E /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		BEC5C866296F2AC700FF977E /* CharacterDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsView.swift; sourceTree = "<group>"; };
 		BEC5C86A296F4ED400FF977E /* HouseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseType.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 		36B955C9296CB9E3006A0467 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				BE4A44FE29705F5900557648 /* Profile */,
 				BE3F6F2D296F62B400E2C124 /* Favorites */,
 				BEC5C863296F2A9900FF977E /* CharacterDetails */,
 				BE00C86F296E108A00DC1F3D /* Home */,
@@ -201,6 +206,15 @@
 				BE4A44FA2970075500557648 /* FavoriteCharacter.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		BE4A44FE29705F5900557648 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BE4A450029705F8900557648 /* ProfileView.swift */,
+				BE4A450229705F9900557648 /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		BEC5C863296F2A9900FF977E /* CharacterDetails */ = {
@@ -313,6 +327,7 @@
 				BEC5C867296F2AC700FF977E /* CharacterDetailsView.swift in Sources */,
 				36B955D1296CBCD7006A0467 /* PasswordChangeViewController.swift in Sources */,
 				BE00C86E296E0C4600DC1F3D /* TabBarController.swift in Sources */,
+				BE4A450329705F9900557648 /* ProfileViewController.swift in Sources */,
 				BEC5C86B296F4ED400FF977E /* HouseType.swift in Sources */,
 				36B955D8296CBD9E006A0467 /* RegisterViewController.swift in Sources */,
 				BE3F6F31296F62E100E2C124 /* FavoritesView.swift in Sources */,
@@ -326,6 +341,7 @@
 				36B955B6296CB743006A0467 /* AppDelegate.swift in Sources */,
 				36B955B8296CB743006A0467 /* SceneDelegate.swift in Sources */,
 				36B955D3296CBCF4006A0467 /* PasswordChangeView.swift in Sources */,
+				BE4A450129705F8900557648 /* ProfileView.swift in Sources */,
 				BE00C877296E14E800DC1F3D /* HomeCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

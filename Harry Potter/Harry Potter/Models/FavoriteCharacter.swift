@@ -8,6 +8,6 @@
 import Foundation
 
 struct FavoriteCharacter {
-    var pokemon: [String]
+    var character: [String]
     var email: String
 }
