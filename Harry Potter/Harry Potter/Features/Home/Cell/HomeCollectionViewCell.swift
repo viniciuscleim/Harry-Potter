@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class HomeCollectionViewCell: UICollectionViewCell {
     
@@ -20,7 +21,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
     lazy var characterImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(systemName: "person")
         image.contentMode = .scaleAspectFit
         return image
     }()
@@ -30,7 +30,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(red: 55/255, green: 67/255, blue: 91/255, alpha: 1.0)
         label.font = UIFont.systemFont(ofSize: 22)
-        label.text = "Harry Potter"
         return label
     }()
     
@@ -43,6 +42,13 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func setupCell(data: Charactere) {
+        let url = URL(string: data.image) ?? URL(fileURLWithPath: "")
+        characterImageView.af.setImage(withURL: url)
+        
+        characterNameLabel.text = data.name
     }
     
     private func initialConfig() {

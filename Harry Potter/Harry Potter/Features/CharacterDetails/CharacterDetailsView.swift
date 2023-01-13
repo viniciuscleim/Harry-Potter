@@ -24,7 +24,7 @@ class CharacterDetailsView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
-        button.tintColor = .black
+        button.tintColor = .white
         button.addTarget(self, action: #selector(didTapReturnButton), for: .touchUpInside)
         return button
     }()
@@ -33,7 +33,7 @@ class CharacterDetailsView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "heart"), for: .normal)
-        button.tintColor = .black
+        button.tintColor = .white
         button.addTarget(self, action: #selector(didTapFavoriteButton), for: .touchUpInside)
         return button
     }()
@@ -41,7 +41,7 @@ class CharacterDetailsView: UIView {
     lazy var characterNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(red: 55/255, green: 67/255, blue: 91/255, alpha: 1.0)
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
         label.text = "Harry Potter"
         label.textAlignment = .center
@@ -59,7 +59,7 @@ class CharacterDetailsView: UIView {
     lazy var houseLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(red: 55/255, green: 67/255, blue: 91/255, alpha: 1.0)
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.text = "House:"
         return label
@@ -68,7 +68,7 @@ class CharacterDetailsView: UIView {
     lazy var houseTypeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(red: 55/255, green: 67/255, blue: 91/255, alpha: 1.0)
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 18)
         label.text = "Gryffindor"
         return label
@@ -77,7 +77,7 @@ class CharacterDetailsView: UIView {
     lazy var ancestryLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(red: 55/255, green: 67/255, blue: 91/255, alpha: 1.0)
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.text = "Ancestry:"
         return label
@@ -86,7 +86,7 @@ class CharacterDetailsView: UIView {
     lazy var ancestryTypeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(red: 55/255, green: 67/255, blue: 91/255, alpha: 1.0)
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 18)
         label.text = "Half-blood"
         return label
@@ -95,7 +95,7 @@ class CharacterDetailsView: UIView {
     lazy var wandLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(red: 55/255, green: 67/255, blue: 91/255, alpha: 1.0)
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.text = "Wand:"
         return label
@@ -104,7 +104,7 @@ class CharacterDetailsView: UIView {
     lazy var wandTypeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(red: 55/255, green: 67/255, blue: 91/255, alpha: 1.0)
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 18)
         label.text = "Holly"
         return label

@@ -25,6 +25,12 @@
 		BE00C871296E109F00DC1F3D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE00C870296E109F00DC1F3D /* HomeViewController.swift */; };
 		BE00C873296E10AC00DC1F3D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE00C872296E10AC00DC1F3D /* HomeView.swift */; };
 		BE00C877296E14E800DC1F3D /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE00C876296E14E800DC1F3D /* HomeCollectionViewCell.swift */; };
+		BE0A502A2971926200F08F62 /* GenericRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A50292971926200F08F62 /* GenericRequest.swift */; };
+		BE0A502C297192BB00F08F62 /* CharactersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A502B297192BB00F08F62 /* CharactersRequest.swift */; };
+		BE0A502E2971931500F08F62 /* Charactere.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A502D2971931500F08F62 /* Charactere.swift */; };
+		BE0A50312971941000F08F62 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = BE0A50302971941000F08F62 /* AlamofireImage */; };
+		BE0A50342971948C00F08F62 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A50332971948C00F08F62 /* HomeViewModel.swift */; };
+		BE0A503629719B1B00F08F62 /* CharacterDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A503529719B1B00F08F62 /* CharacterDetailsViewModel.swift */; };
 		BE3F6F2F296F62CE00E2C124 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F6F2E296F62CE00E2C124 /* FavoritesViewController.swift */; };
 		BE3F6F31296F62E100E2C124 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F6F30296F62E100E2C124 /* FavoritesView.swift */; };
 		BE4A44FB2970075500557648 /* FavoriteCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4A44FA2970075500557648 /* FavoriteCharacter.swift */; };
@@ -55,6 +61,11 @@
 		BE00C870296E109F00DC1F3D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BE00C872296E10AC00DC1F3D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		BE00C876296E14E800DC1F3D /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		BE0A50292971926200F08F62 /* GenericRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericRequest.swift; sourceTree = "<group>"; };
+		BE0A502B297192BB00F08F62 /* CharactersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRequest.swift; sourceTree = "<group>"; };
+		BE0A502D2971931500F08F62 /* Charactere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charactere.swift; sourceTree = "<group>"; };
+		BE0A50332971948C00F08F62 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		BE0A503529719B1B00F08F62 /* CharacterDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModel.swift; sourceTree = "<group>"; };
 		BE3F6F2E296F62CE00E2C124 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		BE3F6F30296F62E100E2C124 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		BE4A44FA2970075500557648 /* FavoriteCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharacter.swift; sourceTree = "<group>"; };
@@ -73,6 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE00C865296DF19800DC1F3D /* FirebaseAuth in Frameworks */,
+				BE0A50312971941000F08F62 /* AlamofireImage in Frameworks */,
 				BE00C867296DF19800DC1F3D /* FirebaseFirestore in Frameworks */,
 				BE00C869296DF19800DC1F3D /* FirebaseStorage in Frameworks */,
 			);
@@ -100,6 +112,7 @@
 		36B955B4296CB743006A0467 /* Harry Potter */ = {
 			isa = PBXGroup;
 			children = (
+				BE0A50282971925000F08F62 /* Request */,
 				BE4A44F92970073900557648 /* Models */,
 				BEC5C869296F4EBF00FF977E /* Enums */,
 				BEC5C86C296F52DC00FF977E /* Extension */,
@@ -170,6 +183,7 @@
 				BE00C875296E14D300DC1F3D /* Cell */,
 				BE00C872296E10AC00DC1F3D /* HomeView.swift */,
 				BE00C870296E109F00DC1F3D /* HomeViewController.swift */,
+				BE0A50332971948C00F08F62 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -180,6 +194,15 @@
 				BE00C876296E14E800DC1F3D /* HomeCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		BE0A50282971925000F08F62 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				BE0A50292971926200F08F62 /* GenericRequest.swift */,
+				BE0A502B297192BB00F08F62 /* CharactersRequest.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		BE3F6F2D296F62B400E2C124 /* Favorites */ = {
@@ -204,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				BE4A44FA2970075500557648 /* FavoriteCharacter.swift */,
+				BE0A502D2971931500F08F62 /* Charactere.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -222,6 +246,7 @@
 			children = (
 				BEC5C866296F2AC700FF977E /* CharacterDetailsView.swift */,
 				BEC5C864296F2AB300FF977E /* CharacterDetailsViewController.swift */,
+				BE0A503529719B1B00F08F62 /* CharacterDetailsViewModel.swift */,
 			);
 			path = CharacterDetails;
 			sourceTree = "<group>";
@@ -262,6 +287,7 @@
 				BE00C864296DF19800DC1F3D /* FirebaseAuth */,
 				BE00C866296DF19800DC1F3D /* FirebaseFirestore */,
 				BE00C868296DF19800DC1F3D /* FirebaseStorage */,
+				BE0A50302971941000F08F62 /* AlamofireImage */,
 			);
 			productName = "Harry Potter";
 			productReference = 36B955B2296CB743006A0467 /* Harry Potter.app */;
@@ -293,6 +319,7 @@
 			mainGroup = 36B955A9296CB743006A0467;
 			packageReferences = (
 				BE00C863296DF19800DC1F3D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				BE0A502F2971941000F08F62 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = 36B955B3296CB743006A0467 /* Products */;
 			projectDirPath = "";
@@ -324,14 +351,18 @@
 				BEC5C865296F2AB300FF977E /* CharacterDetailsViewController.swift in Sources */,
 				36B955CE296CBABA006A0467 /* LoginViewController.swift in Sources */,
 				36B955CC296CBA2D006A0467 /* LoginView.swift in Sources */,
+				BE0A502A2971926200F08F62 /* GenericRequest.swift in Sources */,
 				BEC5C867296F2AC700FF977E /* CharacterDetailsView.swift in Sources */,
 				36B955D1296CBCD7006A0467 /* PasswordChangeViewController.swift in Sources */,
 				BE00C86E296E0C4600DC1F3D /* TabBarController.swift in Sources */,
 				BE4A450329705F9900557648 /* ProfileViewController.swift in Sources */,
 				BEC5C86B296F4ED400FF977E /* HouseType.swift in Sources */,
+				BE0A502E2971931500F08F62 /* Charactere.swift in Sources */,
 				36B955D8296CBD9E006A0467 /* RegisterViewController.swift in Sources */,
 				BE3F6F31296F62E100E2C124 /* FavoritesView.swift in Sources */,
+				BE0A502C297192BB00F08F62 /* CharactersRequest.swift in Sources */,
 				BE3F6F2F296F62CE00E2C124 /* FavoritesViewController.swift in Sources */,
+				BE0A503629719B1B00F08F62 /* CharacterDetailsViewModel.swift in Sources */,
 				BE00C873296E10AC00DC1F3D /* HomeView.swift in Sources */,
 				BEC5C86E296F52EB00FF977E /* CALayer.swift in Sources */,
 				BE4A44FD29700B0000557648 /* FavoritesTableViewCell.swift in Sources */,
@@ -339,6 +370,7 @@
 				36B955D6296CBD87006A0467 /* RegisterView.swift in Sources */,
 				BE4A44FB2970075500557648 /* FavoriteCharacter.swift in Sources */,
 				36B955B6296CB743006A0467 /* AppDelegate.swift in Sources */,
+				BE0A50342971948C00F08F62 /* HomeViewModel.swift in Sources */,
 				36B955B8296CB743006A0467 /* SceneDelegate.swift in Sources */,
 				36B955D3296CBCF4006A0467 /* PasswordChangeView.swift in Sources */,
 				BE4A450129705F8900557648 /* ProfileView.swift in Sources */,
@@ -560,6 +592,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		BE0A502F2971941000F08F62 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -577,6 +617,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BE00C863296DF19800DC1F3D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		BE0A50302971941000F08F62 /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE0A502F2971941000F08F62 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
