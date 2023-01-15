@@ -11,6 +11,7 @@ class HomeViewController: UIViewController {
     
     var homeView: HomeView?
     let viewModel: HomeViewModel = HomeViewModel()
+    var alert: Alert?
     
     override func loadView() {
         homeView = HomeView()
@@ -23,6 +24,7 @@ class HomeViewController: UIViewController {
         homeView?.setupCollectionViewDelegate(delegate: self, dataSource: self)
         viewModel.setHomeViewModelDelegate(delegate: self)
         viewModel.makeRequest()
+        alert = Alert(controller: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +44,7 @@ extension HomeViewController: HomeViewModelDelegate {
     }
     
     func errorRequest() {
-        // alert de erro na request
+        alert?.configAlert(title: "Ops", message: "Tivemos um problema no nosso servidor, tente novamente!")
     }
 }
 

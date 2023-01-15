@@ -12,6 +12,7 @@ class FavoritesViewController: UIViewController {
     var favoritesView: FavoritesView?
     var favoritesCharacteres: [FavoriteCharacter] = []
     var isThereAnyFavorite: Bool = true
+    var alert: Alert?
     
     let viewModel: FavoritesViewModel = FavoritesViewModel()
     
@@ -25,6 +26,7 @@ class FavoritesViewController: UIViewController {
         view.backgroundColor = .white
         favoritesView?.setupTableViewDelegate(delegate: self, dataSource: self)
         viewModel.setFavoritesViewModelDelegate(delegate: self)
+        alert = Alert(controller: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,7 +47,7 @@ extension FavoritesViewController: FavoritesViewModelDelegate {
     }
     
     func errorRequest() {
-        //alert erro
+        alert?.configAlert(title: "Ops", message: "Tivemos um problema no nosso servidor, tente novamente!")
     }
 }
 

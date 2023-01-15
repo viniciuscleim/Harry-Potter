@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController {
     
     var profileView: ProfileView?
     var editButton: Bool = true
+    var alert: Alert?
     
     let viewModel: ProfileViewModel = ProfileViewModel()
     let currentUser = Auth.auth().currentUser
@@ -28,15 +29,16 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .white
         profileView?.setDelegate(delegate: self)
         pickerController.delegate = self
+        alert = Alert(controller: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         viewModel.getUserDataFromFirebase(nameTF: profileView?.nameTextField ?? UITextField(),
                                           emailTF: profileView?.emailTextField ?? UITextField(),
                                           favoriteTF: profileView?.favoriteCharacterTextField ?? UITextField(),
-                                          userImage: profileView?.userImageView ?? UIImageView())
+                                          userImage: profileView?.userImageView ?? UIImageView(), controller: self)
     }
-    
+
     private func updateEditButton() {
         if editButton {
             profileView?.editButton.setTitle("Save", for: .normal)
@@ -59,7 +61,7 @@ class ProfileViewController: UIViewController {
         
         if vcCount > 1 {
             if viewControllers?[vcCount - 2] is RegisterViewController {
-                viewModel.saveAllUserDataTogether(image: profileView?.userImageView.image ?? UIImage(), name: profileView?.nameTextField.text ?? "", email: profileView?.emailTextField.text ?? "", favoriteCharacter: profileView?.favoriteCharacterTextField.text ?? "")
+                viewModel.saveAllUserDataTogether(image: profileView?.userImageView.image ?? UIImage(), name: profileView?.nameTextField.text ?? "", email: profileView?.emailTextField.text ?? "", favoriteCharacter: profileView?.favoriteCharacterTextField.text ?? "", controller: self)
             } else {
                 viewModel.updateUserProfileInFirebase(name: profileView?.nameTextField.text ?? "", email: profileView?.emailTextField.text ?? "", favoriteCharacter: profileView?.favoriteCharacterTextField.text ?? "")
             }
@@ -79,16 +81,18 @@ extension ProfileViewController: ProfileViewDelegate {
     }
     
     func actionLogoutButton() {
-        // alert confirmar sair
-        let vc: LoginViewController = LoginViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        alert?.configAlert(title: "Atenção", message: "Você tem certeza que quer sair do aplicativo?", completion: {
+            let vc: LoginViewController = LoginViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        })
     }
     
     func actionDeleteAccountButton() {
-        // alert confirmar deletar
-        currentUser?.delete()
-        let vc: LoginViewController = LoginViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        alert?.configAlert(title: "Atenção", message: "Você tem certeza que quer deletar a sua conta? Essa ação não tem volta.", completion: {
+            self.currentUser?.delete()
+            let vc: LoginViewController = LoginViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        })
     }
 }
 

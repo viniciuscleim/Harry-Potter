@@ -12,6 +12,7 @@ class RegisterViewController: UIViewController {
 
     var registerView: RegisterView?
     var auth: Auth?
+    var alert: Alert?
     
     override func loadView() {
         registerView = RegisterView()
@@ -22,6 +23,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         registerView?.setDelegate(delegate: self)
         auth = Auth.auth()
+        alert = Alert(controller: self)
     }
     
     private func makeRegister() {
@@ -30,9 +32,8 @@ class RegisterViewController: UIViewController {
         
         auth?.createUser(withEmail: email, password: password, completion: { user, error in
             if error != nil {
-                //alert erro
+                self.alert?.configAlert(title: "Ops", message: "Algo deu errado, tente novamente!")
             } else {
-                //alert sucesso
                 let vc: TabBarController = TabBarController()
                 vc.selectedIndex = 2
                 vc.isNewUser = user?.additionalUserInfo?.isNewUser

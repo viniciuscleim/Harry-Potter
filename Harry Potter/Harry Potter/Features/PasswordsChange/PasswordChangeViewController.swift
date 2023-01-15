@@ -12,6 +12,7 @@ class PasswordChangeViewController: UIViewController {
     
     var passwordChangeView: PasswordChangeView?
     var auth: Auth?
+    var alert: Alert?
     
     override func loadView() {
         passwordChangeView = PasswordChangeView()
@@ -22,6 +23,7 @@ class PasswordChangeViewController: UIViewController {
         super.viewDidLoad()
         passwordChangeView?.setDelegate(delegate: self)
         auth = Auth.auth()
+        alert = Alert(controller: self)
     }
     
     private func resetPassword() {
@@ -29,9 +31,9 @@ class PasswordChangeViewController: UIViewController {
         
         auth?.sendPasswordReset(withEmail: email, completion: { error in
             if error == nil {
-                //alert de sucesso
+                self.alert?.configAlert(title: "Email enviado com sucesso", message: "Verifique sua caixa de entrada/spam em alguns instantes!")
             } else {
-                //alert de erro
+                self.alert?.configAlert(title: "Ops", message: "Algo deu errado, tente novamente!")
             }
         })
     }

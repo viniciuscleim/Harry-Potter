@@ -39,6 +39,7 @@
 		BE4A450329705F9900557648 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4A450229705F9900557648 /* ProfileViewController.swift */; };
 		BE58D5E62972AF8400D9E9C4 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE58D5E52972AF8400D9E9C4 /* ProfileViewModel.swift */; };
 		BE58D5EC2972CB1A00D9E9C4 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE58D5EB2972CB1A00D9E9C4 /* FavoritesViewModel.swift */; };
+		BE6C12F629743F4C00CBF71F /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6C12F529743F4C00CBF71F /* Alert.swift */; };
 		BEC5C865296F2AB300FF977E /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C864296F2AB300FF977E /* CharacterDetailsViewController.swift */; };
 		BEC5C867296F2AC700FF977E /* CharacterDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C866296F2AC700FF977E /* CharacterDetailsView.swift */; };
 		BEC5C86B296F4ED400FF977E /* HouseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C86A296F4ED400FF977E /* HouseType.swift */; };
@@ -77,6 +78,7 @@
 		BE4A450229705F9900557648 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BE58D5E52972AF8400D9E9C4 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		BE58D5EB2972CB1A00D9E9C4 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		BE6C12F529743F4C00CBF71F /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		BEC5C864296F2AB300FF977E /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		BEC5C866296F2AC700FF977E /* CharacterDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsView.swift; sourceTree = "<group>"; };
 		BEC5C86A296F4ED400FF977E /* HouseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseType.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		36B955B4296CB743006A0467 /* Harry Potter */ = {
 			isa = PBXGroup;
 			children = (
+				BE6C12F429743ECD00CBF71F /* Alert */,
 				BE0A50282971925000F08F62 /* Request */,
 				BE4A44F92970073900557648 /* Models */,
 				BEC5C869296F4EBF00FF977E /* Enums */,
@@ -248,6 +251,14 @@
 				BE58D5E52972AF8400D9E9C4 /* ProfileViewModel.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		BE6C12F429743ECD00CBF71F /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				BE6C12F529743F4C00CBF71F /* Alert.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		BEC5C863296F2A9900FF977E /* CharacterDetails */ = {
@@ -381,6 +392,7 @@
 				BE00C871296E109F00DC1F3D /* HomeViewController.swift in Sources */,
 				36B955D6296CBD87006A0467 /* RegisterView.swift in Sources */,
 				BE4A44FB2970075500557648 /* FavoriteCharacter.swift in Sources */,
+				BE6C12F629743F4C00CBF71F /* Alert.swift in Sources */,
 				36B955B6296CB743006A0467 /* AppDelegate.swift in Sources */,
 				BE0A50342971948C00F08F62 /* HomeViewModel.swift in Sources */,
 				36B955B8296CB743006A0467 /* SceneDelegate.swift in Sources */,

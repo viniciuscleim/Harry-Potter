@@ -16,8 +16,10 @@ class ProfileViewModel {
     let firebaseFirestore = Firestore.firestore()
     let currentUser = Auth.auth().currentUser
     let storage = Storage.storage().reference()
+    
     var userData: [UserData] = []
     var isNewUser: Bool = false
+    var alert: Alert?
     
     private func saveUserProfileInFirebase(name: String, email: String, favoriteCharacter: String, userImage: String, id: String) {
         let docPath = "userData/\(id)"
@@ -30,7 +32,9 @@ class ProfileViewModel {
         ])
     }
     
-    public func saveAllUserDataTogether(image: UIImage, name: String, email: String, favoriteCharacter: String) {
+    public func saveAllUserDataTogether(image: UIImage, name: String, email: String, favoriteCharacter: String, controller: UIViewController) {
+        alert = Alert(controller: controller)
+        
         guard let image = image.jpegData(compressionQuality: 0.8) else {return}
         
         let imagePath = "userImages/\(currentUser?.uid ?? "").jpg"
@@ -46,12 +50,11 @@ class ProfileViewModel {
                             self.saveUserProfileInFirebase(name: name, email: email, favoriteCharacter: favoriteCharacter, userImage: urlImagem, id: self.currentUser?.uid ?? "")
                         }
                     }else{
-                        //alert deu erro
-                        print("ERRO")
+                        self.alert?.configAlert(title: "Ops", message: "Algo deu errado, tente novamente!")
                     }
                 }
             }else{
-                //alert deu erro
+                self.alert?.configAlert(title: "Ops", message: "Algo deu errado, tente novamente!")
             }
         }
     }
@@ -66,7 +69,9 @@ class ProfileViewModel {
         ])
     }
     
-    public func getUserDataFromFirebase(nameTF: UITextField, emailTF: UITextField, favoriteTF: UITextField, userImage: UIImageView) {
+    public func getUserDataFromFirebase(nameTF: UITextField, emailTF: UITextField, favoriteTF: UITextField, userImage: UIImageView, controller: UIViewController) {
+        alert = Alert(controller: controller)
+        
         firebaseFirestore.collection("userData").getDocuments { snapshot, error in
             if error == nil {
                 if let snapshot {
@@ -81,7 +86,7 @@ class ProfileViewModel {
                         if self.isNewUser == false {
                             self.setupUI(nameTF: nameTF, emailTF: emailTF, favoriteTF: favoriteTF, userImage: userImage, index: self.getIndex())
                         } else {
-                            //alert informando a importancia de preencher o perfil
+                            self.alert?.configAlert(title: "IMPORTANTE", message: "Para uma melhor experiência, preencha os dados solicitados clicando no botão 'Edit'")
                             emailTF.text = self.currentUser?.email
                         }
                     }
