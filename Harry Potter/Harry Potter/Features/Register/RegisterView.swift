@@ -69,6 +69,7 @@ class RegisterView: UIView {
         textField.placeholder = "Digite sua senha"
         textField.autocapitalizationType = .none
         textField.textColor = .black
+        textField.isSecureTextEntry = true
         return textField
     }()
     
@@ -85,6 +86,7 @@ class RegisterView: UIView {
         textField.placeholder = "Confirme sua senha"
         textField.autocapitalizationType = .none
         textField.textColor = .black
+        textField.isSecureTextEntry = true
         return textField
     }()
     
@@ -118,7 +120,7 @@ class RegisterView: UIView {
     }
     
     @objc private func didTapRegisterButton() {
-        delegate?.actionReturnButton()
+        delegate?.actionRegisterButton()
     }
     
     private func addElements() {

@@ -13,6 +13,8 @@ class FavoritesViewController: UIViewController {
     var favoritesCharacteres: [FavoriteCharacter] = []
     var isThereAnyFavorite: Bool = true
     
+    let viewModel: FavoritesViewModel = FavoritesViewModel()
+    
     override func loadView() {
         favoritesView = FavoritesView()
         view = favoritesView
@@ -22,6 +24,28 @@ class FavoritesViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         favoritesView?.setupTableViewDelegate(delegate: self, dataSource: self)
+        viewModel.setFavoritesViewModelDelegate(delegate: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        isThereAnyFavorite = true
+        viewModel.userFavorites = []
+        viewModel.filterCharacteres = []
+        viewModel.getFavoritesFromFirebase()
+    }
+}
+
+//MARK: - FavoritesViewModelDelegate
+
+extension FavoritesViewController: FavoritesViewModelDelegate {
+    func successRequest() {
+        DispatchQueue.main.async {
+            self.favoritesView?.tableView.reloadData()
+        }
+    }
+    
+    func errorRequest() {
+        //alert erro
     }
 }
 
@@ -30,12 +54,12 @@ class FavoritesViewController: UIViewController {
 extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return viewModel.filterCharacteres.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView .dequeueReusableCell(withIdentifier: FavoritesTableViewCell.identifier, for: indexPath) as? FavoritesTableViewCell
-        cell?.setDelegate(delegate: self)
+        cell?.setupCell(character: viewModel.filterCharacteres[indexPath.row])
         return cell ?? UITableViewCell()
     }
     
@@ -45,15 +69,13 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc: CharacterDetailsViewController = CharacterDetailsViewController()
+        vc.characteres = viewModel.filterCharacteres
+        vc.index = indexPath.row
+        
+        if viewModel.userFavorites.contains(viewModel.filterCharacteres[indexPath.row].name) {
+            vc.viewModel.isCharacterFavorite = true
+        }
+        
         navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-//MARK: - FavoritesTableViewCellDelegate
-
-extension FavoritesViewController: FavoritesTableViewCellDelegate {
-    func actionFavoriteButton() {
-        print(#function)
-        // alert confirmar remover dos favoritos
     }
 }

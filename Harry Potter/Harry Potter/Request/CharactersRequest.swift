@@ -28,8 +28,7 @@ class CharactersRequest: CharactersRequestProtocol {
                 return completion(nil, Error.errorDescription(message: "Sem data"))
             }
             
-            let json = try? JSONSerialization.jsonObject(with: data)
-            print(json as Any)
+            _ = try? JSONSerialization.jsonObject(with: data)
             
             guard let response = response as? HTTPURLResponse else {
                 return completion(nil, Error.errorDescription(message: "Falha conversão HTTPURLResponse"))

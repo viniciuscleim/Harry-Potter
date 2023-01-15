@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         loginView?.setDelegate(delegate: self)
         auth = Auth.auth()
+        view.backgroundColor = UIColor(red: 255/255, green: 170/255, blue: 52/255, alpha: 1.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {

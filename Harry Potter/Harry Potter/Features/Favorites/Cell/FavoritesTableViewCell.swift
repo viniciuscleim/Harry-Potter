@@ -6,22 +6,11 @@
 //
 
 import UIKit
-
-protocol FavoritesTableViewCellDelegate: AnyObject {
-    func actionFavoriteButton()
-}
+import AlamofireImage
 
 class FavoritesTableViewCell: UITableViewCell {
     
     static let identifier: String = "FavoritesTableViewCell"
-    
-    let gradient = CAGradientLayer()
-    
-    weak private var delegate: FavoritesTableViewCellDelegate?
-    
-    func setDelegate(delegate: FavoritesTableViewCellDelegate) {
-        self.delegate = delegate
-    }
     
     lazy var characterImageView: UIImageView = {
         let image = UIImageView()
@@ -40,15 +29,6 @@ class FavoritesTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var favoriteButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "heart"), for: .normal)
-        button.tintColor = .black
-        button.addTarget(self, action: #selector(didTapFavoriteButton), for: .touchUpInside)
-        return button
-    }()
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addElements()
@@ -60,14 +40,16 @@ class FavoritesTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc private func didTapFavoriteButton() {
-        delegate?.actionFavoriteButton()
+    public func setupCell(character: Charactere) {
+        let url = URL(string: character.image) ?? URL(fileURLWithPath: "")
+        characterImageView.af.setImage(withURL: url)
+        
+        characterNameLabel.text = character.name
     }
     
     private func addElements() {
         contentView.addSubview(characterImageView)
         contentView.addSubview(characterNameLabel)
-        contentView.addSubview(favoriteButton)
     }
     
     private func setUpConstraints() {
@@ -79,12 +61,7 @@ class FavoritesTableViewCell: UITableViewCell {
             characterImageView.widthAnchor.constraint(equalToConstant: 60),
             
             characterNameLabel.leadingAnchor.constraint(equalTo: characterImageView.trailingAnchor, constant: 20),
-            characterNameLabel.centerYAnchor.constraint(equalTo: characterImageView.centerYAnchor),
-            
-            favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            favoriteButton.centerYAnchor.constraint(equalTo: characterImageView.centerYAnchor),
-            favoriteButton.heightAnchor.constraint(equalToConstant: 36),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 36)
+            characterNameLabel.centerYAnchor.constraint(equalTo: characterImageView.centerYAnchor)
             
         ])
     }

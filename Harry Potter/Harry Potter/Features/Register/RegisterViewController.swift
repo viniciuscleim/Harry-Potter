@@ -34,6 +34,8 @@ class RegisterViewController: UIViewController {
             } else {
                 //alert sucesso
                 let vc: TabBarController = TabBarController()
+                vc.selectedIndex = 2
+                vc.isNewUser = user?.additionalUserInfo?.isNewUser
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         })

@@ -43,8 +43,9 @@ class ProfileView: UIView {
     lazy var userImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(systemName: "person")
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleToFill
+        image.layer.cornerRadius = 40
+        image.layer.masksToBounds = true
         return image
     }()
     
@@ -84,6 +85,7 @@ class ProfileView: UIView {
         textField.keyboardType = .default
         textField.textColor = .darkGray
         textField.isUserInteractionEnabled = false
+        textField.autocapitalizationType = .none
         return textField
     }()
     
@@ -110,6 +112,7 @@ class ProfileView: UIView {
         textField.keyboardType = .default
         textField.textColor = .darkGray
         textField.isUserInteractionEnabled = false
+        textField.autocapitalizationType = .none
         return textField
     }()
     
@@ -136,6 +139,7 @@ class ProfileView: UIView {
         textField.keyboardType = .default
         textField.textColor = .darkGray
         textField.isUserInteractionEnabled = false
+        textField.autocapitalizationType = .none
         return textField
     }()
     

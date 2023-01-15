@@ -44,11 +44,11 @@ class HomeCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func setupCell(data: Charactere) {
-        let url = URL(string: data.image) ?? URL(fileURLWithPath: "")
+    public func setupCell(character: Charactere) {
+        let url = URL(string: character.image) ?? URL(fileURLWithPath: "")
         characterImageView.af.setImage(withURL: url)
         
-        characterNameLabel.text = data.name
+        characterNameLabel.text = character.name
     }
     
     private func initialConfig() {

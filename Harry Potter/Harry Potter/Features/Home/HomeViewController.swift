@@ -27,6 +27,8 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
+        viewModel.userFavorites = []
+        viewModel.getFavoritesFromFirebase()
     }
 }
 
@@ -53,7 +55,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell
-        cell?.setupCell(data: viewModel.filterCharacteres[indexPath.row])
+        cell?.setupCell(character: viewModel.filterCharacteres[indexPath.row])
         return cell ?? UICollectionViewCell()
     }
     
@@ -70,6 +72,11 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let vc: CharacterDetailsViewController = CharacterDetailsViewController()
         vc.characteres = viewModel.filterCharacteres
         vc.index = indexPath.row
+        
+        if viewModel.userFavorites.contains(viewModel.filterCharacteres[indexPath.row].name) {
+            vc.viewModel.isCharacterFavorite = true
+        }
+            
         navigationController?.pushViewController(vc, animated: true)
     }
 }

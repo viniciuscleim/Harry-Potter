@@ -13,6 +13,7 @@ class CharacterDetailsViewController: UIViewController {
     var characterDetailsView: CharacterDetailsView?
     var characteres: [Charactere] = []
     var index: Int = 0
+    let viewModel: CharacterDetailsViewModel = CharacterDetailsViewModel()
     
     override func loadView() {
         characterDetailsView = CharacterDetailsView()
@@ -23,17 +24,22 @@ class CharacterDetailsViewController: UIViewController {
         super.viewDidLoad()
         characterDetailsView?.setDelegate(delegate: self)
         setupUI(data: characteres)
+        viewModel.createFavoritesCollectionInFirebase()
     }
     
-    func setupUI(data: [Charactere]) {
-        let url = URL(string: data[index].image) ?? URL(fileURLWithPath: "")
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.isFavorite(viewModel.isCharacterFavorite, button: characterDetailsView?.favoriteButton ?? UIButton())
+    }
+    
+    func setupUI(data: [Charactere?]) {
+        let url = URL(string: data[index]?.image ?? "") ?? URL(fileURLWithPath: "")
         characterDetailsView?.characterImageView.af.setImage(withURL: url)
         
-        characterDetailsView?.characterNameLabel.text = data[index].name
-        characterDetailsView?.houseTypeLabel.text = data[index].house.rawValue.capitalized
-        characterDetailsView?.ancestryTypeLabel.text = data[index].ancestry.rawValue.capitalized
-        characterDetailsView?.wandTypeLabel.text = data[index].wand.wood.rawValue.capitalized
-        view.backgroundColor = getHouseColor(type: data[index].house.rawValue)
+        characterDetailsView?.characterNameLabel.text = data[index]?.name
+        characterDetailsView?.houseTypeLabel.text = data[index]?.house.rawValue.capitalized
+        characterDetailsView?.ancestryTypeLabel.text = data[index]?.ancestry.rawValue.capitalized
+        characterDetailsView?.wandTypeLabel.text = data[index]?.wand.wood.rawValue.capitalized
+        view.backgroundColor = getHouseColor(type: data[index]?.house.rawValue ?? "")
     }
     
     private func getHouseColor(type: String) -> UIColor {
@@ -58,6 +64,6 @@ extension CharacterDetailsViewController: CharacterDetailsViewDelegate {
     }
     
     func actionFavoriteButton() {
-        print(#function)
+        viewModel.favoriteButtonConfig(button: characterDetailsView?.favoriteButton ?? UIButton(), character: characterDetailsView?.characterNameLabel.text ?? "")
     }
 }

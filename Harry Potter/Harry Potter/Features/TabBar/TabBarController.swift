@@ -8,6 +8,14 @@
 import UIKit
 
 class TabBarController: UITabBarController {
+    
+    var isNewUser: Bool? {
+            didSet {
+                if let vc1 = self.viewControllers?[2] as? ProfileViewController {
+                    vc1.viewModel.isNewUser = isNewUser ?? false
+                }
+            }
+        }
 
     override func viewDidLoad() {
         super.viewDidLoad()

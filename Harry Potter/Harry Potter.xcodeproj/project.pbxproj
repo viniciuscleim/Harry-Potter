@@ -37,10 +37,13 @@
 		BE4A44FD29700B0000557648 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4A44FC29700B0000557648 /* FavoritesTableViewCell.swift */; };
 		BE4A450129705F8900557648 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4A450029705F8900557648 /* ProfileView.swift */; };
 		BE4A450329705F9900557648 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4A450229705F9900557648 /* ProfileViewController.swift */; };
+		BE58D5E62972AF8400D9E9C4 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE58D5E52972AF8400D9E9C4 /* ProfileViewModel.swift */; };
+		BE58D5EC2972CB1A00D9E9C4 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE58D5EB2972CB1A00D9E9C4 /* FavoritesViewModel.swift */; };
 		BEC5C865296F2AB300FF977E /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C864296F2AB300FF977E /* CharacterDetailsViewController.swift */; };
 		BEC5C867296F2AC700FF977E /* CharacterDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C866296F2AC700FF977E /* CharacterDetailsView.swift */; };
 		BEC5C86B296F4ED400FF977E /* HouseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C86A296F4ED400FF977E /* HouseType.swift */; };
 		BEC5C86E296F52EB00FF977E /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C86D296F52EB00FF977E /* CALayer.swift */; };
+		BEDB490629732D140052D419 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB490529732D140052D419 /* UserData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,10 +75,13 @@
 		BE4A44FC29700B0000557648 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		BE4A450029705F8900557648 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BE4A450229705F9900557648 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BE58D5E52972AF8400D9E9C4 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		BE58D5EB2972CB1A00D9E9C4 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		BEC5C864296F2AB300FF977E /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		BEC5C866296F2AC700FF977E /* CharacterDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsView.swift; sourceTree = "<group>"; };
 		BEC5C86A296F4ED400FF977E /* HouseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseType.swift; sourceTree = "<group>"; };
 		BEC5C86D296F52EB00FF977E /* CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
+		BEDB490529732D140052D419 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +217,7 @@
 				BE3F6F32296F655600E2C124 /* Cell */,
 				BE3F6F30296F62E100E2C124 /* FavoritesView.swift */,
 				BE3F6F2E296F62CE00E2C124 /* FavoritesViewController.swift */,
+				BE58D5EB2972CB1A00D9E9C4 /* FavoritesViewModel.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -228,6 +235,7 @@
 			children = (
 				BE4A44FA2970075500557648 /* FavoriteCharacter.swift */,
 				BE0A502D2971931500F08F62 /* Charactere.swift */,
+				BEDB490529732D140052D419 /* UserData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -237,6 +245,7 @@
 			children = (
 				BE4A450029705F8900557648 /* ProfileView.swift */,
 				BE4A450229705F9900557648 /* ProfileViewController.swift */,
+				BE58D5E52972AF8400D9E9C4 /* ProfileViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -348,12 +357,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE58D5EC2972CB1A00D9E9C4 /* FavoritesViewModel.swift in Sources */,
 				BEC5C865296F2AB300FF977E /* CharacterDetailsViewController.swift in Sources */,
 				36B955CE296CBABA006A0467 /* LoginViewController.swift in Sources */,
 				36B955CC296CBA2D006A0467 /* LoginView.swift in Sources */,
 				BE0A502A2971926200F08F62 /* GenericRequest.swift in Sources */,
 				BEC5C867296F2AC700FF977E /* CharacterDetailsView.swift in Sources */,
 				36B955D1296CBCD7006A0467 /* PasswordChangeViewController.swift in Sources */,
+				BE58D5E62972AF8400D9E9C4 /* ProfileViewModel.swift in Sources */,
 				BE00C86E296E0C4600DC1F3D /* TabBarController.swift in Sources */,
 				BE4A450329705F9900557648 /* ProfileViewController.swift in Sources */,
 				BEC5C86B296F4ED400FF977E /* HouseType.swift in Sources */,
@@ -364,6 +375,7 @@
 				BE3F6F2F296F62CE00E2C124 /* FavoritesViewController.swift in Sources */,
 				BE0A503629719B1B00F08F62 /* CharacterDetailsViewModel.swift in Sources */,
 				BE00C873296E10AC00DC1F3D /* HomeView.swift in Sources */,
+				BEDB490629732D140052D419 /* UserData.swift in Sources */,
 				BEC5C86E296F52EB00FF977E /* CALayer.swift in Sources */,
 				BE4A44FD29700B0000557648 /* FavoritesTableViewCell.swift in Sources */,
 				BE00C871296E109F00DC1F3D /* HomeViewController.swift in Sources */,
