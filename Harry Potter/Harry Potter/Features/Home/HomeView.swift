@@ -57,9 +57,13 @@ class HomeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupCollectionViewDelegate(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+    public func setupCollectionViewDelegate(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
         collectionView.delegate = delegate
         collectionView.dataSource = dataSource
+    }
+    
+    public func setupTextFieldDelegate(delegate: UITextFieldDelegate) {
+        searchTextField.delegate = delegate
     }
     
     private func addElements() {

@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         homeView?.setupCollectionViewDelegate(delegate: self, dataSource: self)
+        homeView?.setupTextFieldDelegate(delegate: self)
         viewModel.setHomeViewModelDelegate(delegate: self)
         viewModel.makeRequest()
         alert = Alert(controller: self)
@@ -57,7 +58,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell
-        cell?.setupCell(character: viewModel.filterCharacteres[indexPath.row])
+        cell?.setupCell(character: viewModel.filterCharacteresToTextField[indexPath.row])
         return cell ?? UICollectionViewCell()
     }
     
@@ -80,5 +81,18 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
             
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+//MARK: - UITextFieldDelegate
+
+extension HomeViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text as NSString? {
+            let updatedtext = text.replacingCharacters(in: range, with: string)
+            viewModel.setSearchTextField(text: updatedtext)
+            homeView?.collectionView.reloadData()
+        }
+        return true
     }
 }

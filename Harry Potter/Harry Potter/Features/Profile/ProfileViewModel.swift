@@ -21,6 +21,10 @@ class ProfileViewModel {
     var isNewUser: Bool = false
     var alert: Alert?
     
+    public func setupAlertController(controller: UIViewController) {
+        alert = Alert(controller: controller)
+    }
+    
     private func saveUserProfileInFirebase(name: String, email: String, favoriteCharacter: String, userImage: String, id: String) {
         let docPath = "userData/\(id)"
         let docReference = firebaseFirestore.document(docPath)
@@ -32,10 +36,12 @@ class ProfileViewModel {
         ])
     }
     
-    public func saveAllUserDataTogether(image: UIImage, name: String, email: String, favoriteCharacter: String, controller: UIViewController) {
-        alert = Alert(controller: controller)
+    public func saveAllUserDataTogether(image: UIImage, name: String, email: String, favoriteCharacter: String, requestType: FirebaseRequestType) {
         
-        guard let image = image.jpegData(compressionQuality: 0.8) else {return}
+        guard let image = image.jpegData(compressionQuality: 0.8) else {
+            self.saveUserProfileInFirebase(name: name, email: email, favoriteCharacter: favoriteCharacter, userImage: "", id: self.currentUser?.uid ?? "")
+            return
+        }
         
         let imagePath = "userImages/\(currentUser?.uid ?? "").jpg"
         
@@ -47,7 +53,13 @@ class ProfileViewModel {
                 imageRef.downloadURL { url, error in
                     if error == nil{
                         if let urlImagem = url?.absoluteString{
-                            self.saveUserProfileInFirebase(name: name, email: email, favoriteCharacter: favoriteCharacter, userImage: urlImagem, id: self.currentUser?.uid ?? "")
+                            
+                            switch requestType {
+                            case .save:
+                                self.saveUserProfileInFirebase(name: name, email: email, favoriteCharacter: favoriteCharacter, userImage: urlImagem, id: self.currentUser?.uid ?? "")
+                            case .update:
+                                self.updateUserProfileInFirebase(name: name, email: email, favoriteCharacter: favoriteCharacter, userImage: urlImagem)
+                            }
                         }
                     }else{
                         self.alert?.configAlert(title: "Ops", message: "Algo deu errado, tente novamente!")
@@ -59,18 +71,57 @@ class ProfileViewModel {
         }
     }
     
-    public func updateUserProfileInFirebase(name: String, email: String, favoriteCharacter: String) {
+    private func updateUserProfileInFirebase(name: String, email: String, favoriteCharacter: String, userImage: String) {
         let docPath = "userData/\(currentUser?.uid ?? "")"
         let docReference = firebaseFirestore.document(docPath)
         docReference.updateData([
             "name": name,
             "email": email,
-            "favoriteCharacter": favoriteCharacter
+            "favoriteCharacter": favoriteCharacter,
+            "userImage": userImage
         ])
     }
     
-    public func getUserDataFromFirebase(nameTF: UITextField, emailTF: UITextField, favoriteTF: UITextField, userImage: UIImageView, controller: UIViewController) {
-        alert = Alert(controller: controller)
+    public func removeUserDataFromFirebase() {
+        firebaseFirestore.collection("userData").getDocuments { snapshot, error in
+            if error == nil {
+                for _ in snapshot!.documents {
+                    self.firebaseFirestore.collection("userData").document(self.currentUser?.uid ?? "").delete { error in
+                        if error != nil {
+                            self.alert?.configAlert(title: "Ops", message: "Algo deu errado, tente novamente!")
+                        } else {
+                            DispatchQueue.main.async {
+                                self.removeUserFavoritesFromFirebase()
+                                self.alert?.configAlert(title: "Sucesso", message: "Sua conta foi deletada. Sentimos muito em vê-lo partir!")
+                            }
+                        }
+                    }
+                }
+            } else {
+                self.alert?.configAlert(title: "Ops", message: "Algo deu errado, tente novamente!")
+            }
+        }
+    }
+    
+    private func removeUserFavoritesFromFirebase() {
+        firebaseFirestore.collection("favorites").getDocuments { snapshot, error in
+            if error == nil {
+                for _ in snapshot!.documents {
+                    self.firebaseFirestore.collection("favorites").document(self.currentUser?.email ?? "").delete { error in
+                        if error != nil {
+                            self.alert?.configAlert(title: "Ops", message: "Algo deu errado, tente novamente!")
+                        } else {
+                            self.currentUser?.delete()
+                        }
+                    }
+                }
+            } else {
+                self.alert?.configAlert(title: "Ops", message: "Algo deu errado, tente novamente!")
+            }
+        }
+    }
+    
+    public func getUserDataFromFirebase(nameTF: UITextField, emailTF: UITextField, favoriteTF: UITextField, userImage: UIImageView) {
         
         firebaseFirestore.collection("userData").getDocuments { snapshot, error in
             if error == nil {
@@ -104,8 +155,7 @@ class ProfileViewModel {
     }
     
     private func getIndex() -> Int {
-        let index = userData.firstIndex { $0.email == currentUser?.email } ?? 10
-        print(index)
+        let index = userData.firstIndex { $0.email == currentUser?.email } ?? 0
         return index
     }
 }

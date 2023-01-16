@@ -22,8 +22,11 @@ class PasswordChangeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordChangeView?.setDelegate(delegate: self)
+        passwordChangeView?.setupTextFieldDelegate(delegate: self)
         auth = Auth.auth()
         alert = Alert(controller: self)
+        passwordChangeView?.sendEmailButton.isEnabled = false
+        enableButton()
     }
     
     private func resetPassword() {
@@ -51,4 +54,26 @@ extension PasswordChangeViewController: PasswordViewDelegate {
     }
 }
 
+//MARK: - UITextFieldDelegate
 
+extension PasswordChangeViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        enableButton()
+    }
+    
+    private func enableButton() {
+        if passwordChangeView?.emailTextField.text == "" {
+            passwordChangeView?.sendEmailButton.isEnabled = false
+            passwordChangeView?.sendEmailButton.setTitleColor(.lightGray, for: .normal)
+        } else {
+            passwordChangeView?.sendEmailButton.isEnabled = true
+            passwordChangeView?.sendEmailButton.setTitleColor(.white, for: .normal)
+        }
+    }
+}

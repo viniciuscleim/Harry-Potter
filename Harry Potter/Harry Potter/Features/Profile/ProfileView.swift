@@ -45,6 +45,8 @@ class ProfileView: UIView {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleToFill
         image.layer.cornerRadius = 40
+        image.image = UIImage(systemName: "person.fill")
+        image.tintColor = .black
         image.layer.masksToBounds = true
         return image
     }()
@@ -59,6 +61,7 @@ class ProfileView: UIView {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(didTapEditPictureButton), for: .touchUpInside)
+        button.isHidden = true
         return button
     }()
     

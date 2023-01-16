@@ -42,7 +42,7 @@
 		BE6C12F629743F4C00CBF71F /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6C12F529743F4C00CBF71F /* Alert.swift */; };
 		BEC5C865296F2AB300FF977E /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C864296F2AB300FF977E /* CharacterDetailsViewController.swift */; };
 		BEC5C867296F2AC700FF977E /* CharacterDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C866296F2AC700FF977E /* CharacterDetailsView.swift */; };
-		BEC5C86B296F4ED400FF977E /* HouseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C86A296F4ED400FF977E /* HouseType.swift */; };
+		BEC5C86B296F4ED400FF977E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C86A296F4ED400FF977E /* Enums.swift */; };
 		BEC5C86E296F52EB00FF977E /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C86D296F52EB00FF977E /* CALayer.swift */; };
 		BEDB490629732D140052D419 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB490529732D140052D419 /* UserData.swift */; };
 /* End PBXBuildFile section */
@@ -81,7 +81,7 @@
 		BE6C12F529743F4C00CBF71F /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		BEC5C864296F2AB300FF977E /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		BEC5C866296F2AC700FF977E /* CharacterDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsView.swift; sourceTree = "<group>"; };
-		BEC5C86A296F4ED400FF977E /* HouseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseType.swift; sourceTree = "<group>"; };
+		BEC5C86A296F4ED400FF977E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		BEC5C86D296F52EB00FF977E /* CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
 		BEDB490529732D140052D419 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -274,7 +274,7 @@
 		BEC5C869296F4EBF00FF977E /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				BEC5C86A296F4ED400FF977E /* HouseType.swift */,
+				BEC5C86A296F4ED400FF977E /* Enums.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -378,7 +378,7 @@
 				BE58D5E62972AF8400D9E9C4 /* ProfileViewModel.swift in Sources */,
 				BE00C86E296E0C4600DC1F3D /* TabBarController.swift in Sources */,
 				BE4A450329705F9900557648 /* ProfileViewController.swift in Sources */,
-				BEC5C86B296F4ED400FF977E /* HouseType.swift in Sources */,
+				BEC5C86B296F4ED400FF977E /* Enums.swift in Sources */,
 				BE0A502E2971931500F08F62 /* Charactere.swift in Sources */,
 				36B955D8296CBD9E006A0467 /* RegisterViewController.swift in Sources */,
 				BE3F6F31296F62E100E2C124 /* FavoritesView.swift in Sources */,

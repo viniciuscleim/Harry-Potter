@@ -30,13 +30,22 @@ class ProfileViewController: UIViewController {
         profileView?.setDelegate(delegate: self)
         pickerController.delegate = self
         alert = Alert(controller: self)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        viewModel.setupAlertController(controller: self)
+        
         viewModel.getUserDataFromFirebase(nameTF: profileView?.nameTextField ?? UITextField(),
                                           emailTF: profileView?.emailTextField ?? UITextField(),
                                           favoriteTF: profileView?.favoriteCharacterTextField ?? UITextField(),
-                                          userImage: profileView?.userImageView ?? UIImageView(), controller: self)
+                                          userImage: profileView?.userImageView ?? UIImageView())
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if viewModel.isNewUser {
+            viewModel.saveAllUserDataTogether(image: profileView?.userImageView.image ?? UIImage(),
+                                              name: profileView?.nameTextField.text ?? "",
+                                              email: profileView?.emailTextField.text ?? "",
+                                              favoriteCharacter: profileView?.favoriteCharacterTextField.text ?? "",
+                                              requestType: .save)
+        }
     }
 
     private func updateEditButton() {
@@ -44,12 +53,14 @@ class ProfileViewController: UIViewController {
             profileView?.editButton.setTitle("Save", for: .normal)
             profileView?.nameTextField.isUserInteractionEnabled = true
             profileView?.favoriteCharacterTextField.isUserInteractionEnabled = true
+            profileView?.editUserPictureButton.isHidden = false
             editButton = false
         } else {
             profileView?.editButton.setTitle("Edit", for: .normal)
             profileView?.nameTextField.isUserInteractionEnabled = false
             profileView?.emailTextField.isUserInteractionEnabled = false
             profileView?.favoriteCharacterTextField.isUserInteractionEnabled = false
+            profileView?.editUserPictureButton.isHidden = true
             editButton = true
             getPreviousViewController()
         }
@@ -61,9 +72,17 @@ class ProfileViewController: UIViewController {
         
         if vcCount > 1 {
             if viewControllers?[vcCount - 2] is RegisterViewController {
-                viewModel.saveAllUserDataTogether(image: profileView?.userImageView.image ?? UIImage(), name: profileView?.nameTextField.text ?? "", email: profileView?.emailTextField.text ?? "", favoriteCharacter: profileView?.favoriteCharacterTextField.text ?? "", controller: self)
+                viewModel.saveAllUserDataTogether(image: profileView?.userImageView.image ?? UIImage(),
+                                                  name: profileView?.nameTextField.text ?? "",
+                                                  email: profileView?.emailTextField.text ?? "",
+                                                  favoriteCharacter: profileView?.favoriteCharacterTextField.text ?? "",
+                                                  requestType: .save)
             } else {
-                viewModel.updateUserProfileInFirebase(name: profileView?.nameTextField.text ?? "", email: profileView?.emailTextField.text ?? "", favoriteCharacter: profileView?.favoriteCharacterTextField.text ?? "")
+                viewModel.saveAllUserDataTogether(image: profileView?.userImageView.image ?? UIImage(),
+                                                  name: profileView?.nameTextField.text ?? "",
+                                                  email: profileView?.emailTextField.text ?? "",
+                                                  favoriteCharacter: profileView?.favoriteCharacterTextField.text ?? "",
+                                                  requestType: .update)
             }
         }
     }
@@ -89,7 +108,7 @@ extension ProfileViewController: ProfileViewDelegate {
     
     func actionDeleteAccountButton() {
         alert?.configAlert(title: "Atenção", message: "Você tem certeza que quer deletar a sua conta? Essa ação não tem volta.", completion: {
-            self.currentUser?.delete()
+            self.viewModel.removeUserDataFromFirebase()
             let vc: LoginViewController = LoginViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         })

@@ -22,15 +22,33 @@ class HomeViewModel {
     
     var characteres: [Charactere] = []
     var filterCharacteres: [Charactere] = []
+    var filterCharacteresToTextField: [Charactere] = []
     var favoritesCharacteres: [FavoriteCharacter] = []
     var userFavorites: [String] = []
     var isThereAnyFavorites: Bool = true
-    var isFirstLoggin: Bool = false
     
     weak private var delegate: HomeViewModelDelegate?
     
     public func setHomeViewModelDelegate(delegate: HomeViewModelDelegate) {
         self.delegate = delegate
+    }
+    
+    func setSearchTextField(text: String) {
+        if text.isEmpty {
+            self.filterCharacteresToTextField = self.filterCharacteres
+        } else {
+            self.filterCharacteresToTextField = self.filterCharacteres.filter({
+                let test = ($0.name).lowercased().contains(text.lowercased())
+                return test
+            })
+        }
+    }
+    
+    func favoriteButton(_ isFavorite: Bool, button: UIButton) {
+        if isFavorite {
+            button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            button.configuration?.baseForegroundColor = UIColor.yellow
+        }
     }
     
     func getFavoritesFromFirebase() {
@@ -55,7 +73,6 @@ class HomeViewModel {
             for favoriteCharactere in favoritesCharacteres[index].character {
                 userFavorites.append(favoriteCharactere)
             }
-            print("USER\(userFavorites)")
         }
     }
     
@@ -64,7 +81,10 @@ class HomeViewModel {
         
         if index == nil {
             isThereAnyFavorites = false
+        } else {
+            isThereAnyFavorites = true
         }
+        
         return index ?? 0
     }
     
@@ -77,6 +97,7 @@ class HomeViewModel {
                         self.filterCharacteres.append(charactere)
                     }
                 }
+                self.filterCharacteresToTextField = self.filterCharacteres
                 self.delegate?.successRequest()
             } else {
                 self.delegate?.errorRequest()
@@ -85,6 +106,6 @@ class HomeViewModel {
     }
     
     public var numberOfItensInSection: Int {
-        return filterCharacteres.count
+        return filterCharacteresToTextField.count
     }
 }

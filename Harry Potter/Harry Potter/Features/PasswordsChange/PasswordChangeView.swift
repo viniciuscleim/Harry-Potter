@@ -97,6 +97,10 @@ class PasswordChangeView: UIView {
         delegate?.actionSendEmailButton()
     }
     
+    public func setupTextFieldDelegate(delegate: UITextFieldDelegate) {
+        emailTextField.delegate = delegate
+    }
+    
     private func addElements() {
         addSubview(returnButton)
         addSubview(logoImageView)

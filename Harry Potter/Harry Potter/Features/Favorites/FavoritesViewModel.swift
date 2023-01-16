@@ -25,7 +25,6 @@ class FavoritesViewModel {
     var userFavorites: [String] = []
     var characteres: [Charactere] = []
     var filterCharacteres: [Charactere] = []
-    var isFavorite: Bool = false
     
     weak private var delegate: FavoritesViewModelDelegate?
     
@@ -37,7 +36,6 @@ class FavoritesViewModel {
         if isFavorite {
             button.setImage(UIImage(systemName: "star.fill"), for: .normal)
             button.configuration?.baseForegroundColor = UIColor.yellow
-            self.isFavorite = false
         }
     }
     
@@ -64,7 +62,6 @@ class FavoritesViewModel {
             for favoriteCharactere in favoritesCharacteres[index].character {
                 userFavorites.append(favoriteCharactere)
             }
-            print("USER\(userFavorites)")
         }
     }
     
@@ -73,6 +70,8 @@ class FavoritesViewModel {
         
         if index == nil {
             isThereAnyFavorites = false
+        } else {
+            isThereAnyFavorites = true
         }
         return index ?? 0
     }
@@ -87,7 +86,6 @@ class FavoritesViewModel {
                     }
                 }
                 self.delegate?.successRequest()
-                print("FILTER \(self.filterCharacteres)")
             } else {
                 self.delegate?.errorRequest()
             }

@@ -9,6 +9,8 @@ import UIKit
 
 protocol RegisterViewDelegate: AnyObject {
     func actionReturnButton()
+    func actionSeePasswordButton()
+    func actionSeeConfirmPasswordButton()
     func actionRegisterButton()
 }
 
@@ -73,6 +75,15 @@ class RegisterView: UIView {
         return textField
     }()
     
+    lazy var seePasswordButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(didTapSeePasswordButton), for: .touchUpInside)
+        return button
+    }()
+    
     lazy var confirmPasswordTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -88,6 +99,26 @@ class RegisterView: UIView {
         textField.textColor = .black
         textField.isSecureTextEntry = true
         return textField
+    }()
+    
+    lazy var seeConfirmPasswordButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(didTapSeeConfirmPasswordButton), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var wrongPasswordLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "As senhas não conferem"
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.font = label.font.withSize(14)
+        label.textColor = .red
+        return label
     }()
     
     lazy var registerButton: UIButton = {
@@ -119,8 +150,22 @@ class RegisterView: UIView {
         delegate?.actionReturnButton()
     }
     
+    @objc private func didTapSeePasswordButton() {
+        delegate?.actionSeePasswordButton()
+    }
+    
+    @objc private func didTapSeeConfirmPasswordButton() {
+        delegate?.actionSeeConfirmPasswordButton()
+    }
+    
     @objc private func didTapRegisterButton() {
         delegate?.actionRegisterButton()
+    }
+    
+    public func setupTextFieldDelegate(delegate: UITextFieldDelegate) {
+        emailTextField.delegate = delegate
+        passwordTextField.delegate = delegate
+        confirmPasswordTextField.delegate = delegate
     }
     
     private func addElements() {
@@ -128,9 +173,11 @@ class RegisterView: UIView {
         addSubview(welcomeLabel)
         addSubview(emailTextField)
         addSubview(passwordTextField)
+        addSubview(seePasswordButton)
         addSubview(confirmPasswordTextField)
+        addSubview(seeConfirmPasswordButton)
         addSubview(registerButton)
-        
+        addSubview(wrongPasswordLabel)
     }
     
     private func setupConstraints() {
@@ -144,20 +191,29 @@ class RegisterView: UIView {
             welcomeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             welcomeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             
-            emailTextField.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 40),
-            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            emailTextField.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 20),
+            emailTextField.leadingAnchor.constraint(equalTo: welcomeLabel.leadingAnchor),
             emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             emailTextField.heightAnchor.constraint(equalToConstant: 40),
             
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 40),
-            passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
+            passwordTextField.leadingAnchor.constraint(equalTo: welcomeLabel.leadingAnchor),
             passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             passwordTextField.heightAnchor.constraint(equalToConstant: 40),
             
-            confirmPasswordTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 40),
-            confirmPasswordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            seePasswordButton.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),
+            seePasswordButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor, constant: -5),
+            
+            confirmPasswordTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
+            confirmPasswordTextField.leadingAnchor.constraint(equalTo: welcomeLabel.leadingAnchor),
             confirmPasswordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            seeConfirmPasswordButton.centerYAnchor.constraint(equalTo: confirmPasswordTextField.centerYAnchor),
+            seeConfirmPasswordButton.trailingAnchor.constraint(equalTo: confirmPasswordTextField.trailingAnchor, constant: -5),
+            
+            wrongPasswordLabel.topAnchor.constraint(equalTo: confirmPasswordTextField.bottomAnchor, constant: 4),
+            wrongPasswordLabel.leadingAnchor.constraint(equalTo: welcomeLabel.leadingAnchor),
             
             registerButton.topAnchor.constraint(equalTo: confirmPasswordTextField.bottomAnchor, constant: 50),
             registerButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),

@@ -11,7 +11,6 @@ class FavoritesViewController: UIViewController {
     
     var favoritesView: FavoritesView?
     var favoritesCharacteres: [FavoriteCharacter] = []
-    var isThereAnyFavorite: Bool = true
     var alert: Alert?
     
     let viewModel: FavoritesViewModel = FavoritesViewModel()
@@ -30,7 +29,6 @@ class FavoritesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        isThereAnyFavorite = true
         viewModel.userFavorites = []
         viewModel.filterCharacteres = []
         viewModel.getFavoritesFromFirebase()
@@ -73,11 +71,7 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         let vc: CharacterDetailsViewController = CharacterDetailsViewController()
         vc.characteres = viewModel.filterCharacteres
         vc.index = indexPath.row
-        
-        if viewModel.userFavorites.contains(viewModel.filterCharacteres[indexPath.row].name) {
-            vc.viewModel.isCharacterFavorite = true
-        }
-        
+        vc.viewModel.isCharacterFavorite = true
         navigationController?.pushViewController(vc, animated: true)
     }
 }

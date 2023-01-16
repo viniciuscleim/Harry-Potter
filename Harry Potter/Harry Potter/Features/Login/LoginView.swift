@@ -9,6 +9,7 @@ import UIKit
 
 protocol LoginViewDelegate: AnyObject {
     func actionForgotPasswordButton()
+    func actionSeePasswordButton()
     func actionSignInButton()
     func actionRegisterButton()
 }
@@ -65,6 +66,15 @@ class LoginView: UIView {
         return textField
     }()
     
+    lazy var seePasswordButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(didTapSeePasswordButton), for: .touchUpInside)
+        return button
+    }()
+    
     lazy var forgotPasswordButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -116,6 +126,10 @@ class LoginView: UIView {
         delegate?.actionForgotPasswordButton()
     }
     
+    @objc private func didTapSeePasswordButton() {
+        delegate?.actionSeePasswordButton()
+    }
+    
     @objc private func didTapSignInButton() {
         delegate?.actionSignInButton()
     }
@@ -123,11 +137,17 @@ class LoginView: UIView {
     @objc private func didTapRegisterButton() {
         delegate?.actionRegisterButton()
     }
+    
+    public func setupTextFieldDelegate(delegate: UITextFieldDelegate) {
+        emailTextField.delegate = delegate
+        passwordTexField.delegate = delegate
+    }
 
     private func addElements() {
         addSubview(logoImageView)
         addSubview(emailTextField)
         addSubview(passwordTexField)
+        addSubview(seePasswordButton)
         addSubview(forgotPasswordButton)
         addSubview(signInButton)
         addSubview(registerButton)
@@ -150,6 +170,9 @@ class LoginView: UIView {
             passwordTexField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             passwordTexField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             passwordTexField.heightAnchor.constraint(equalToConstant: 40),
+            
+            seePasswordButton.centerYAnchor.constraint(equalTo: passwordTexField.centerYAnchor),
+            seePasswordButton.trailingAnchor.constraint(equalTo: passwordTexField.trailingAnchor, constant: -5),
             
             forgotPasswordButton.topAnchor.constraint(equalTo: passwordTexField.bottomAnchor, constant: 10),
             forgotPasswordButton.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),

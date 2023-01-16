@@ -26,8 +26,12 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loginView?.setDelegate(delegate: self)
-        auth = Auth.auth()
+        loginView?.setupTextFieldDelegate(delegate: self)
+        enableButton()
+
         view.backgroundColor = UIColor(red: 255/255, green: 170/255, blue: 52/255, alpha: 1.0)
+        
+        auth = Auth.auth()
         alert = Alert(controller: self)
     }
     
@@ -56,14 +60,29 @@ class LoginViewController: UIViewController {
         let vc: TabBarController = TabBarController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    private func seePasswordButtonLogic() {
+        if loginView?.seePasswordButton.currentImage == UIImage(systemName: "eye.slash") {
+            loginView?.seePasswordButton.setImage(UIImage(systemName: "eye"), for: .normal)
+            loginView?.passwordTexField.isSecureTextEntry = false
+        } else {
+            loginView?.seePasswordButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+            loginView?.passwordTexField.isSecureTextEntry = true
+        }
+    }
 }
 
 //MARK: - loginViewDelegate
 
 extension LoginViewController: LoginViewDelegate {
+    
     func actionForgotPasswordButton() {
         let nextViewController: PasswordChangeViewController = PasswordChangeViewController()
         navigationController?.pushViewController(nextViewController, animated: true)
+    }
+    
+    func actionSeePasswordButton() {
+        seePasswordButtonLogic()
     }
     
     func actionSignInButton() {
@@ -73,5 +92,34 @@ extension LoginViewController: LoginViewDelegate {
     func actionRegisterButton() {
         let nextViewController: RegisterViewController = RegisterViewController()
         navigationController?.pushViewController(nextViewController, animated: true)
+    }
+}
+
+//MARK: - UITextFieldDelegate
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.isEqual(loginView?.emailTextField) {
+            loginView?.emailTextField.resignFirstResponder()
+            loginView?.passwordTexField.becomeFirstResponder()
+        } else {
+            loginView?.passwordTexField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        enableButton()
+    }
+    
+    private func enableButton() {
+        if loginView?.emailTextField.text == "" || loginView?.passwordTexField.text == "" {
+            loginView?.signInButton.isEnabled = false
+            loginView?.signInButton.setTitleColor(.lightGray, for: .normal)
+        } else {
+            loginView?.signInButton.isEnabled = true
+            loginView?.signInButton.setTitleColor(.white, for: .normal)
+        }
     }
 }
