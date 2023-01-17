@@ -36,7 +36,9 @@ class PasswordChangeViewController: UIViewController {
         
         auth?.sendPasswordReset(withEmail: email, completion: { error in
             if error == nil {
-                self.alert?.configAlert(title: "Email enviado com sucesso", message: "Verifique sua caixa de entrada/spam em alguns instantes!")
+                self.alert?.configAlert(title: "Email enviado com sucesso", message: "Verifique sua caixa de entrada/spam em alguns instantes!", completion: {
+                    self.navigationController?.popViewController(animated: true)
+                })
             } else {
                 self.alert?.configAlert(title: "Ops", message: "Algo deu errado, tente novamente!")
             }

@@ -111,7 +111,9 @@ class ProfileViewModel {
                         if error != nil {
                             self.alert?.configAlert(title: "Ops", message: "Algo deu errado, tente novamente!")
                         } else {
-                            self.currentUser?.delete()
+                            DispatchQueue.main.async {
+                                self.currentUser?.delete()
+                            }
                         }
                     }
                 }

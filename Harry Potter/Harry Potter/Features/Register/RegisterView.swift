@@ -227,7 +227,7 @@ class RegisterView: UIView {
             seeConfirmPasswordButton.trailingAnchor.constraint(equalTo: confirmPasswordTextField.trailingAnchor, constant: -5),
             
             wrongPasswordLabel.topAnchor.constraint(equalTo: confirmPasswordTextField.bottomAnchor, constant: 4),
-            wrongPasswordLabel.leadingAnchor.constraint(equalTo: welcomeLabel.leadingAnchor),
+            wrongPasswordLabel.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
             
             registerButton.topAnchor.constraint(equalTo: confirmPasswordTextField.bottomAnchor, constant: 50),
             registerButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),

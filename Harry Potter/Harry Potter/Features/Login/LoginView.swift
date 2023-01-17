@@ -44,7 +44,6 @@ class LoginView: UIView {
         textField.placeholder = "Digite seu email"
         textField.autocapitalizationType = .none
         textField.textColor = .black
-        textField.text = "vini@hotmail.com"
         return textField
     }()
     
@@ -62,7 +61,6 @@ class LoginView: UIView {
         textField.autocapitalizationType = .none
         textField.textColor = .black
         textField.isSecureTextEntry = true
-        textField.text = "123456"
         return textField
     }()
     
