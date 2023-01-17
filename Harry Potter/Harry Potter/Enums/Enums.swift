@@ -29,3 +29,10 @@ enum PasswordType {
     case password
     case confirmPassword
 }
+
+//MARK: - CellType
+
+enum CellType {
+    case notFound
+    case empty
+}

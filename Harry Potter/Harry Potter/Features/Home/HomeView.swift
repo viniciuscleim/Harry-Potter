@@ -49,6 +49,23 @@ class HomeView: UIView {
         return collectionView
     }()
     
+    lazy var loadingView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
+        return view
+    }()
+    
+    lazy var gifImageView: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        let gifImage = UIImage.gifImageWithName("harrryPomo")
+        image.image = gifImage
+        image.tintColor = .orange
+        image.contentMode = .scaleAspectFill
+        return image
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addElements()
@@ -72,6 +89,8 @@ class HomeView: UIView {
         addSubview(characterLabel)
         addSubview(searchTextField)
         addSubview(collectionView)
+        addSubview(loadingView)
+        addSubview(gifImageView)
     }
     
     private func setupConstraints() {
@@ -87,7 +106,17 @@ class HomeView: UIView {
             collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0)
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            
+            loadingView.topAnchor.constraint(equalTo: topAnchor),
+            loadingView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            gifImageView.heightAnchor.constraint(equalToConstant: 200),
+            gifImageView.widthAnchor.constraint(equalToConstant: 200),
+            gifImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            gifImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
             
         ])
     }

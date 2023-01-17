@@ -24,7 +24,7 @@ class ErrorCollectionViewCell: UICollectionViewCell {
     lazy var errorImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(systemName: "person")
+        image.image = UIImage(named: "varinhaQuebrada")
         image.contentMode = .scaleAspectFit
         return image
     }()
@@ -32,7 +32,7 @@ class ErrorCollectionViewCell: UICollectionViewCell {
     lazy var errorMessageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(red: 55/255, green: 67/255, blue: 91/255, alpha: 1.0)
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 18)
         label.textAlignment = .center
         label.text = "Ops, algo deu errado. Sentimos muito!"
@@ -43,7 +43,7 @@ class ErrorCollectionViewCell: UICollectionViewCell {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Tente novamente", for: .normal)
-        button.backgroundColor = .gray
+        button.backgroundColor = UIColor(red: 255/255, green: 177/255, blue: 53/255, alpha: 1.0)
         button.addTarget(self, action: #selector(didTapTryAgainButton), for: .touchUpInside)
         return button
     }()

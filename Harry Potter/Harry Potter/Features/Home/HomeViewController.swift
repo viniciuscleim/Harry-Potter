@@ -30,12 +30,24 @@ class HomeViewController: UIViewController {
         viewModel.setHomeViewModelDelegate(delegate: self)
         viewModel.makeRequest()
         alert = Alert(controller: self)
+        startLoading()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
         viewModel.userFavorites = []
         viewModel.getFavoritesFromFirebase()
+        
+    }
+    
+    func startLoading() {
+        homeView?.loadingView.isHidden = false
+        homeView?.gifImageView.isHidden = false
+    }
+    
+    func stopLoading() {
+        homeView?.loadingView.isHidden = true
+        homeView?.gifImageView.isHidden = true
     }
 }
 
@@ -45,6 +57,7 @@ extension HomeViewController: HomeViewModelDelegate {
     func successRequest() {
         DispatchQueue.main.async {
             self.homeView?.collectionView.reloadData()
+            self.stopLoading()
         }
     }
     
@@ -52,6 +65,7 @@ extension HomeViewController: HomeViewModelDelegate {
         DispatchQueue.main.async {
             self.isError = true
             self.homeView?.collectionView.reloadData()
+            self.stopLoading()
         }
     }
 }
@@ -77,6 +91,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         } else if isEmpty {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.identifier, for: indexPath) as? EmptyCollectionViewCell
             cell?.isUserInteractionEnabled = false
+            cell?.setupCell(type: .empty)
             return cell ?? UICollectionViewCell()
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell
@@ -100,15 +115,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc: CharacterDetailsViewController = CharacterDetailsViewController()
-        vc.characteres = viewModel.filterCharacteres
-        vc.index = indexPath.row
-        
-        if viewModel.userFavorites.contains(viewModel.filterCharacteres[indexPath.row].name) {
-            vc.viewModel.isCharacterFavorite = true
+        if !isError {
+            let vc: CharacterDetailsViewController = CharacterDetailsViewController()
+            vc.characteres = viewModel.filterCharacteres
+            vc.index = indexPath.row
+            if viewModel.userFavorites.contains(viewModel.filterCharacteres[indexPath.row].name) {
+                vc.viewModel.isCharacterFavorite = true
+            }
+            navigationController?.pushViewController(vc, animated: true)
         }
-            
-        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -129,6 +144,8 @@ extension HomeViewController: UITextFieldDelegate {
 
 extension HomeViewController: ErrorCollectionViewCellDelegate {
     func actionTryAgainButton() {
-        print(#function)
+        isError = false
+        viewModel.makeRequest()
+        startLoading()
     }
 }

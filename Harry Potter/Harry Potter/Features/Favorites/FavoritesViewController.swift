@@ -23,7 +23,7 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 83/255, green: 17/255, blue: 27/255, alpha: 1.0)
-        favoritesView?.setupTableViewDelegate(delegate: self, dataSource: self)
+        favoritesView?.setupCollectionViewDelegate(delegate: self, dataSource: self)
         viewModel.setFavoritesViewModelDelegate(delegate: self)
         alert = Alert(controller: self)
     }
@@ -32,6 +32,17 @@ class FavoritesViewController: UIViewController {
         viewModel.userFavorites = []
         viewModel.filterCharacteres = []
         viewModel.getFavoritesFromFirebase()
+        startLoading()
+    }
+    
+    func startLoading() {
+        favoritesView?.loadingView.isHidden = false
+        favoritesView?.gifImageView.isHidden = false
+    }
+    
+    func stopLoading() {
+        favoritesView?.loadingView.isHidden = true
+        favoritesView?.gifImageView.isHidden = true
     }
 }
 
@@ -40,21 +51,22 @@ class FavoritesViewController: UIViewController {
 extension FavoritesViewController: FavoritesViewModelDelegate {
     func successRequest() {
         DispatchQueue.main.async {
-            self.favoritesView?.tableView.reloadData()
+            self.favoritesView?.collectionView.reloadData()
+            self.stopLoading()
         }
     }
     
     func errorRequest() {
         alert?.configAlert(title: "Ops", message: "Tivemos um problema no nosso servidor, tente novamente!")
+        stopLoading()
     }
 }
 
-//MARK: - UITableViewDataSource, UITableViewDelegate
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 
-extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
+extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("COUNT \(viewModel.userFavorites.count)")
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if viewModel.userFavorites.count == 0 {
             return 1
         } else {
@@ -62,23 +74,35 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if viewModel.userFavorites.count == 0 {
-            let cell = tableView .dequeueReusableCell(withIdentifier: EmptyTableViewCell.identifier, for: indexPath) as? EmptyTableViewCell
-            return cell ?? UITableViewCell()
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.identifier, for: indexPath) as? EmptyCollectionViewCell
+            cell?.isUserInteractionEnabled = false
+            cell?.setupCell(type: .notFound)
+            return cell ?? UICollectionViewCell()
         } else {
-            let cell = tableView .dequeueReusableCell(withIdentifier: FavoritesTableViewCell.identifier, for: indexPath) as? FavoritesTableViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell
             cell?.setupCell(character: viewModel.filterCharacteres[indexPath.row])
-            return cell ?? UITableViewCell()
+            return cell ?? UICollectionViewCell()
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = view.frame.size.width - 30
+        
+        if viewModel.userFavorites.count == 0 {
+            return CGSize(width: size, height: 170)
+        } else {
+            return CGSize(width: size, height: 110)
+        }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc: CharacterDetailsViewController = CharacterDetailsViewController()
         vc.characteres = viewModel.filterCharacteres
         vc.index = indexPath.row

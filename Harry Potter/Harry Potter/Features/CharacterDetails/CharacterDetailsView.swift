@@ -42,7 +42,7 @@ class CharacterDetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 32, weight: .semibold)
         label.text = "Harry Potter"
         label.textAlignment = .center
         return label
@@ -60,7 +60,7 @@ class CharacterDetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
         label.text = "House:"
         return label
     }()
@@ -69,7 +69,7 @@ class CharacterDetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = UIFont.systemFont(ofSize: 22)
         label.text = "Gryffindor"
         return label
     }()
@@ -78,7 +78,7 @@ class CharacterDetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
         label.text = "Ancestry:"
         return label
     }()
@@ -87,7 +87,7 @@ class CharacterDetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = UIFont.systemFont(ofSize: 22)
         label.text = "Half-blood"
         return label
     }()
@@ -96,7 +96,7 @@ class CharacterDetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
         label.text = "Wand:"
         return label
     }()
@@ -105,7 +105,7 @@ class CharacterDetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = UIFont.systemFont(ofSize: 22)
         label.text = "Holly"
         return label
     }()
@@ -113,7 +113,7 @@ class CharacterDetailsView: UIView {
     lazy var houseImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "lufa-lufa")
+        image.image = UIImage(named: "covinalLogoM")
         image.contentMode = .scaleAspectFill
         return image
     }()
@@ -162,16 +162,16 @@ class CharacterDetailsView: UIView {
             favoriteButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -30),
             favoriteButton.heightAnchor.constraint(equalToConstant: 35),
             
-            characterNameLabel.topAnchor.constraint(equalTo: returnButton.bottomAnchor, constant: 25),
+            characterNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
             characterNameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 30),
             characterNameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -30),
             
-            characterImageView.topAnchor.constraint(equalTo: characterNameLabel.bottomAnchor, constant: 30),
+            characterImageView.topAnchor.constraint(equalTo: characterNameLabel.bottomAnchor, constant: 24),
             characterImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             characterImageView.heightAnchor.constraint(equalToConstant: 150),
             characterImageView.widthAnchor.constraint(equalToConstant: 150),
             
-            houseLabel.topAnchor.constraint(equalTo: characterImageView.bottomAnchor, constant: 34),
+            houseLabel.topAnchor.constraint(equalTo: characterImageView.bottomAnchor, constant: 26),
             houseLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             houseTypeLabel.topAnchor.constraint(equalTo: houseLabel.bottomAnchor, constant: 10),
@@ -190,8 +190,8 @@ class CharacterDetailsView: UIView {
             wandTypeLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             houseImageView.topAnchor.constraint(equalTo: wandTypeLabel.bottomAnchor, constant: 20),
-            houseImageView.heightAnchor.constraint(equalToConstant: 200),
-            houseImageView.widthAnchor.constraint(equalToConstant: 200),
+            houseImageView.heightAnchor.constraint(equalToConstant: 120),
+            houseImageView.widthAnchor.constraint(equalToConstant: 120),
             houseImageView.centerXAnchor.constraint(equalTo: centerXAnchor)
             
         ])
