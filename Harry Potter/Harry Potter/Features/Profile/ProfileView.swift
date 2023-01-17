@@ -29,14 +29,14 @@ class ProfileView: UIView {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = label.font.withSize(24)
-        label.textColor = .black
+        label.textColor = .white
         return label
     }()
     
     lazy var lineView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .black
+        view.backgroundColor = .white
         return view
     }()
     
@@ -46,7 +46,7 @@ class ProfileView: UIView {
         image.contentMode = .scaleToFill
         image.layer.cornerRadius = 40
         image.image = UIImage(systemName: "person.fill")
-        image.tintColor = .black
+        image.tintColor = .white
         image.layer.masksToBounds = true
         return image
     }()
@@ -59,7 +59,7 @@ class ProfileView: UIView {
         button.clipsToBounds = true
         button.setTitle("Edit Picture", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(didTapEditPictureButton), for: .touchUpInside)
         button.isHidden = true
         return button
@@ -72,7 +72,7 @@ class ProfileView: UIView {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = label.font.withSize(18)
-        label.textColor = .black
+        label.textColor = .white
         return label
     }()
     
@@ -99,7 +99,7 @@ class ProfileView: UIView {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = label.font.withSize(18)
-        label.textColor = .black
+        label.textColor = .white
         return label
     }()
     
@@ -126,7 +126,7 @@ class ProfileView: UIView {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = label.font.withSize(18)
-        label.textColor = .black
+        label.textColor = .white
         return label
     }()
     
@@ -149,7 +149,7 @@ class ProfileView: UIView {
     lazy var editButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor(red: 55/255, green: 67/255, blue: 91/255, alpha: 1.0)
+        button.backgroundColor = UIColor(red: 255/255, green: 177/255, blue: 53/255, alpha: 1.0)
         button.layer.cornerRadius = 7
         button.clipsToBounds = true
         button.setTitle("Edit", for: .normal)
@@ -162,12 +162,12 @@ class ProfileView: UIView {
     lazy var logoutButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .white
+        button.backgroundColor = .clear
         button.layer.cornerRadius = 7
         button.clipsToBounds = true
         button.setTitle("Logout", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        button.setTitleColor(UIColor(red: 55/255, green: 67/255, blue: 91/255, alpha: 1.0), for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(didTapLogoutButton), for: .touchUpInside)
         return button
     }()
@@ -175,12 +175,12 @@ class ProfileView: UIView {
     lazy var deleteAccountButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .white
+        button.backgroundColor = .clear
         button.layer.cornerRadius = 7
         button.clipsToBounds = true
         button.setTitle("Delete account", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        button.setTitleColor(UIColor(red: 55/255, green: 67/255, blue: 91/255, alpha: 1.0), for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(didTapDeleteAccountButton), for: .touchUpInside)
         return button
     }()
@@ -213,7 +213,6 @@ class ProfileView: UIView {
     
     private func addElements() {
         addSubview(profileLabel)
-        addSubview(lineView)
         addSubview(userImageView)
         addSubview(editUserPictureButton)
         addSubview(nameLabel)
@@ -233,12 +232,7 @@ class ProfileView: UIView {
             profileLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
             profileLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            lineView.topAnchor.constraint(equalTo: profileLabel.bottomAnchor, constant: 4),
-            lineView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            lineView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            lineView.heightAnchor.constraint(equalToConstant: 1),
-            
-            userImageView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 16),
+            userImageView.topAnchor.constraint(equalTo: profileLabel.bottomAnchor, constant: 20),
             userImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             userImageView.heightAnchor.constraint(equalToConstant: 80),
             userImageView.widthAnchor.constraint(equalToConstant: 80),

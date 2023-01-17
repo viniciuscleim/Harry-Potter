@@ -26,6 +26,7 @@ class HomeViewModel {
     var favoritesCharacteres: [FavoriteCharacter] = []
     var userFavorites: [String] = []
     var isThereAnyFavorites: Bool = true
+    var characterNotFound: Bool = false
     
     weak private var delegate: HomeViewModelDelegate?
     
@@ -38,8 +39,8 @@ class HomeViewModel {
             self.filterCharacteresToTextField = self.filterCharacteres
         } else {
             self.filterCharacteresToTextField = self.filterCharacteres.filter({
-                let test = ($0.name).lowercased().contains(text.lowercased())
-                return test
+                let char = ($0.name).lowercased().contains(text.lowercased())
+                return char
             })
         }
     }

@@ -34,6 +34,7 @@ class FavoritesTableViewCell: UITableViewCell {
         addElements()
         setUpConstraints()
         selectionStyle = .none
+        contentView.backgroundColor = UIColor(red: 255/255, green: 177/255, blue: 53/255, alpha: 1.0)
     }
     
     required init?(coder: NSCoder) {

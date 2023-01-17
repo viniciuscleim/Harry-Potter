@@ -25,9 +25,9 @@ class LoginView: UIView {
     lazy var logoImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-//        image.image = UIImage(named: "glass")
+        image.image = UIImage(named: "logo")
         image.tintColor = .orange
-        image.contentMode = .scaleToFill
+        image.contentMode = .scaleAspectFill
         return image
     }()
     
@@ -79,7 +79,7 @@ class LoginView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Esqueceu a senha?", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(didTapForgotPasswordButton), for: .touchUpInside)
         return button
     }()
@@ -88,8 +88,7 @@ class LoginView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Entrar", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .orange
+        button.backgroundColor = UIColor(red: 255/255, green: 177/255, blue: 53/255, alpha: 1.0)
         button.layer.cornerRadius = 12
         button.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         button.addTarget(self, action: #selector(didTapSignInButton), for: .touchUpInside)
@@ -98,14 +97,13 @@ class LoginView: UIView {
     
     lazy var registerButton: UIButton = {
         let button = UIButton()
-        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 16)]
-        let boldAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.boldSystemFont(ofSize: 16)]
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 16)]
+        let boldAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white, .font: UIFont.boldSystemFont(ofSize: 16)]
         let attributedTitle = NSMutableAttributedString(string: "Ainda não tem conta?", attributes: attributes)
         attributedTitle.append(NSAttributedString(string: " Cadastre-se", attributes: boldAttributes))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setAttributedTitle(attributedTitle, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        button.setTitleColor(UIColor.black, for: .normal)
         button.addTarget(self, action: #selector(didTapRegisterButton), for: .touchUpInside)
         return button
     }()
@@ -114,7 +112,6 @@ class LoginView: UIView {
         super.init(frame: frame)
         addElements()
         setupConstraints()
-        backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -162,13 +159,13 @@ class LoginView: UIView {
             logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             emailTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 40),
-            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             emailTextField.heightAnchor.constraint(equalToConstant: 40),
             
             passwordTexField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
-            passwordTexField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            passwordTexField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            passwordTexField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            passwordTexField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             passwordTexField.heightAnchor.constraint(equalToConstant: 40),
             
             seePasswordButton.centerYAnchor.constraint(equalTo: passwordTexField.centerYAnchor),

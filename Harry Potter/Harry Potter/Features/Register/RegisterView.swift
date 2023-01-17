@@ -42,6 +42,14 @@ class RegisterView: UIView {
         return label
     }()
     
+    lazy var logoImageView: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = UIImage(named: "chapeuSeletor")
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
     lazy var emailTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -126,7 +134,7 @@ class RegisterView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Cadastrar", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .orange
+        button.backgroundColor = UIColor(red: 83/255, green: 17/255, blue: 27/255, alpha: 1.0)
         button.layer.cornerRadius = 12
         button.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         button.addTarget(self, action: #selector(didTapRegisterButton), for: .touchUpInside)
@@ -171,6 +179,7 @@ class RegisterView: UIView {
     private func addElements() {
         addSubview(returnButton)
         addSubview(welcomeLabel)
+        addSubview(logoImageView)
         addSubview(emailTextField)
         addSubview(passwordTextField)
         addSubview(seePasswordButton)
@@ -191,22 +200,27 @@ class RegisterView: UIView {
             welcomeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             welcomeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             
-            emailTextField.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 20),
-            emailTextField.leadingAnchor.constraint(equalTo: welcomeLabel.leadingAnchor),
-            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            logoImageView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 14),
+            logoImageView.heightAnchor.constraint(equalToConstant: 200),
+            logoImageView.widthAnchor.constraint(equalToConstant: 200),
+            logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            emailTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
+            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             emailTextField.heightAnchor.constraint(equalToConstant: 40),
             
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
-            passwordTextField.leadingAnchor.constraint(equalTo: welcomeLabel.leadingAnchor),
-            passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
+            passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             passwordTextField.heightAnchor.constraint(equalToConstant: 40),
             
             seePasswordButton.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),
             seePasswordButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor, constant: -5),
             
             confirmPasswordTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
-            confirmPasswordTextField.leadingAnchor.constraint(equalTo: welcomeLabel.leadingAnchor),
-            confirmPasswordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            confirmPasswordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
+            confirmPasswordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 40),
             
             seeConfirmPasswordButton.centerYAnchor.constraint(equalTo: confirmPasswordTextField.centerYAnchor),

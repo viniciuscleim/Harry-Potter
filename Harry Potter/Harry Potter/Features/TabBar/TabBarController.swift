@@ -29,8 +29,7 @@ class TabBarController: UITabBarController {
         let thirdItem = ProfileViewController()
         
         setViewControllers([firstItem, secondItem, thirdItem], animated: false)
-        tabBar.backgroundColor = UIColor(red: 55/255, green: 67/255, blue: 91/255, alpha: 1.0)
-        tabBar.barTintColor = .gray
+        tabBar.backgroundColor = UIColor(red: 225/255, green: 198/255, blue: 168/255, alpha: 1.0)
         tabBar.tintColor = .white
         tabBar.isTranslucent = false
 

@@ -21,6 +21,8 @@ class PasswordChangeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 83/255, green: 17/255, blue: 27/255, alpha: 1.0)
+        
         passwordChangeView?.setDelegate(delegate: self)
         passwordChangeView?.setupTextFieldDelegate(delegate: self)
         auth = Auth.auth()

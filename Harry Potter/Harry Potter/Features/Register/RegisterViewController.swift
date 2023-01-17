@@ -23,6 +23,8 @@ class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 255/255, green: 177/255, blue: 53/255, alpha: 1.0)
+        
         registerView?.setDelegate(delegate: self)
         registerView?.setupTextFieldDelegate(delegate: self)
         auth = Auth.auth()

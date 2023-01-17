@@ -16,7 +16,7 @@ class HomeView: UIView {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = label.font.withSize(24)
-        label.textColor = .black
+        label.textColor = .white
         return label
     }()
     
@@ -43,6 +43,8 @@ class HomeView: UIView {
         collectionView.isScrollEnabled = true
         collectionView.backgroundColor = .clear
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
+        collectionView.register(ErrorCollectionViewCell.self, forCellWithReuseIdentifier: ErrorCollectionViewCell.identifier)
+        collectionView.register(EmptyCollectionViewCell.self, forCellWithReuseIdentifier: EmptyCollectionViewCell.identifier)
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()

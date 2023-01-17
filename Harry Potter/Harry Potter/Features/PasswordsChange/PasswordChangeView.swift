@@ -25,14 +25,14 @@ class PasswordChangeView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         button.addTarget(self, action: #selector(didTapReturnButton), for: .touchUpInside)
-        button.tintColor = .black
+        button.tintColor = .white
         return button
     }()
     
     lazy var logoImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "Logo")
+        image.image = UIImage(named: "harryFlying")
         image.contentMode = .scaleAspectFit
         return image
     }()
@@ -42,7 +42,7 @@ class PasswordChangeView: UIView {
         label.font = label.font.withSize(20)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Use seu email cadastrado para recuperar a senha:"
-        label.textColor = .black
+        label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -69,7 +69,7 @@ class PasswordChangeView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Enviar", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .orange
+        button.backgroundColor = UIColor(red: 255/255, green: 177/255, blue: 53/255, alpha: 1.0)
         button.layer.cornerRadius = 12
         button.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         button.addTarget(self, action: #selector(didTapSendEmailButton), for: .touchUpInside)

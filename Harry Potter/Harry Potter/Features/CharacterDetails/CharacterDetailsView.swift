@@ -110,6 +110,14 @@ class CharacterDetailsView: UIView {
         return label
     }()
     
+    lazy var houseImageView: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = UIImage(named: "lufa-lufa")
+        image.contentMode = .scaleAspectFill
+        return image
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addElements()
@@ -140,6 +148,7 @@ class CharacterDetailsView: UIView {
         addSubview(ancestryTypeLabel)
         addSubview(wandLabel)
         addSubview(wandTypeLabel)
+        addSubview(houseImageView)
     }
     
     private func setupConstraints() {
@@ -179,6 +188,11 @@ class CharacterDetailsView: UIView {
             
             wandTypeLabel.topAnchor.constraint(equalTo: wandLabel.bottomAnchor, constant: 10),
             wandTypeLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            houseImageView.topAnchor.constraint(equalTo: wandTypeLabel.bottomAnchor, constant: 20),
+            houseImageView.heightAnchor.constraint(equalToConstant: 200),
+            houseImageView.widthAnchor.constraint(equalToConstant: 200),
+            houseImageView.centerXAnchor.constraint(equalTo: centerXAnchor)
             
         ])
     }

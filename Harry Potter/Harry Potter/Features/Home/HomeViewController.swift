@@ -12,6 +12,10 @@ class HomeViewController: UIViewController {
     var homeView: HomeView?
     let viewModel: HomeViewModel = HomeViewModel()
     var alert: Alert?
+    var isError: Bool = false
+    var isEmpty: Bool {
+        return viewModel.filterCharacteresToTextField.count == 0
+    }
     
     override func loadView() {
         homeView = HomeView()
@@ -20,7 +24,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 83/255, green: 17/255, blue: 27/255, alpha: 1.0)
         homeView?.setupCollectionViewDelegate(delegate: self, dataSource: self)
         homeView?.setupTextFieldDelegate(delegate: self)
         viewModel.setHomeViewModelDelegate(delegate: self)
@@ -45,7 +49,10 @@ extension HomeViewController: HomeViewModelDelegate {
     }
     
     func errorRequest() {
-        alert?.configAlert(title: "Ops", message: "Tivemos um problema no nosso servidor, tente novamente!")
+        DispatchQueue.main.async {
+            self.isError = true
+            self.homeView?.collectionView.reloadData()
+        }
     }
 }
 
@@ -53,18 +60,39 @@ extension HomeViewController: HomeViewModelDelegate {
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.numberOfItensInSection
+        
+        if isError || isEmpty {
+            return 1
+        } else {
+            return viewModel.numberOfItensInSection
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell
-        cell?.setupCell(character: viewModel.filterCharacteresToTextField[indexPath.row])
-        return cell ?? UICollectionViewCell()
+        
+        if isError {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ErrorCollectionViewCell.identifier, for: indexPath) as? ErrorCollectionViewCell
+            cell?.setErrorCollectionViewCellDelegate(delegate: self)
+            return cell ?? UICollectionViewCell()
+        } else if isEmpty {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.identifier, for: indexPath) as? EmptyCollectionViewCell
+            cell?.isUserInteractionEnabled = false
+            return cell ?? UICollectionViewCell()
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell
+            cell?.setupCell(character: viewModel.filterCharacteresToTextField[indexPath.row])
+            return cell ?? UICollectionViewCell()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = view.frame.size.width - 30
-        return CGSize(width: size, height: 110)
+        
+        if isError {
+            return CGSize(width: size, height: 200)
+        } else {
+            return CGSize(width: size, height: 110)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -94,5 +122,13 @@ extension HomeViewController: UITextFieldDelegate {
             homeView?.collectionView.reloadData()
         }
         return true
+    }
+}
+
+//MARK: - ErrorCollectionViewCellDelegate
+
+extension HomeViewController: ErrorCollectionViewCellDelegate {
+    func actionTryAgainButton() {
+        print(#function)
     }
 }

@@ -55,18 +55,16 @@ class HomeCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .clear
         backGroundView.layer.cornerRadius = 25
         layer.masksToBounds = true
-        backGroundView.backgroundColor = .white
+        backGroundView.backgroundColor = UIColor(red: 255/255, green: 177/255, blue: 53/255, alpha: 1.0)
         backGroundView.layer.borderWidth = 0.5
         backGroundView.layer.borderColor = UIColor.black.cgColor
         backGroundView.layer.makeShadow(color: .black, x: 0, y: 3, blur: 4, spread: 0)
-        
-        characterNameLabel.layer.makeShadow(color: .black, x: 0, y: 2, blur: 3, spread: 0)
     }
     
     private func addElements() {
-        addSubview(backGroundView)
-        addSubview(characterImageView)
-        addSubview(characterNameLabel)
+        contentView.addSubview(backGroundView)
+        contentView.addSubview(characterImageView)
+        contentView.addSubview(characterNameLabel)
     }
     
     private func setUpConstraints() {

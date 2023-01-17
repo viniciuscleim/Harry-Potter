@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
         loginView?.setupTextFieldDelegate(delegate: self)
         enableButton()
 
-        view.backgroundColor = UIColor(red: 255/255, green: 170/255, blue: 52/255, alpha: 1.0)
+        view.backgroundColor = UIColor(red: 83/255, green: 17/255, blue: 27/255, alpha: 1.0)
         
         auth = Auth.auth()
         alert = Alert(controller: self)
